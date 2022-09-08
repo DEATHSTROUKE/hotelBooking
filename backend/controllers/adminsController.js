@@ -1,0 +1,57 @@
+const ApiError = require("../error/ApiError");
+const {Admins} = require('../models/models')
+
+class AdminsController {
+    async getAll(req, res) {
+        const data = await Admins.findAll()
+        res.json(data)
+    }
+
+    async getOne(req, res, next) {
+        const {id} = req.params
+        if (!id) {
+            return next(ApiError.badRequest('id is not in query params'))
+        }
+        const data = await Admins.findOne({where: {id}})
+        res.json(data)
+    }
+
+    async create(req, res, next) {
+        try {
+            const data = req.body
+            const admin = await Admins.create(data)
+            res.json(admin)
+        } catch (e) {
+            return next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async compare(req, res) {
+        const {tg_id} = req.body
+        const admin = await Admins.findOne({where: {tg_id}})
+        if (admin) {
+            res.json({access: true})
+        } else {
+            res.json({access: false})
+        }
+    }
+
+    async updateObj(req, res) {
+        try {
+            const data = req.body
+            await Admins.update({tg_id: data.tg_id}, {where: {id: data.id}})
+            res.json({success: "ok"})
+        } catch (e) {
+            return next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async deleteObj(req, res) {
+        const {id} = req.params
+        await Admins.destroy({where: {id}})
+        res.json({success: "ok"})
+    }
+}
+
+
+module.exports = new AdminsController()
