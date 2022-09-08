@@ -56,6 +56,66 @@ i.fa {
   scroll-behavior: smooth;
 }
 
+.menu__burger {
+  display: none;
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  padding: 15px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+.menu__burger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.menu__burger::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 1.5px;
+  background: #fff;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-52%);
+  z-index: 2;
+  transition: all 0.3s ease-out;
+}
+.menu__burger::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-52%);
+  z-index: 2;
+  transition: all 0.3s ease-out;
+}
+.menu__burger span {
+  position: absolute;
+  width: 20px;
+  height: 1.5px;
+  background: #fff;
+  top: calc(50% - 0.75px);
+  left: 50%;
+  transform: translateX(-52%);
+  z-index: 2;
+  transition: opacity 0.3s ease-out;
+}
+.menu__burger.menu-open span {
+  opacity: 0;
+}
+.menu__burger.menu-open::after {
+  top: 48%;
+  transform: translate(-52%, -52%) rotate(45deg);
+}
+.menu__burger.menu-open::before {
+  bottom: 47%;
+  transform: translate(-52%, -52%) rotate(-45deg);
+}
+
 .menu__wrapper {
   display: flex;
   justify-content: space-between;
@@ -116,7 +176,7 @@ i.fa {
   background-image: url("./img/first.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -180,6 +240,7 @@ i.fa {
 }
 .room__wrapper .room__gallery img {
   width: 100%;
+  border-radius: 15px;
 }
 .room__wrapper .room__info {
   display: flex;
@@ -209,6 +270,7 @@ i.fa {
   display: block;
   width: 80%;
   margin: 0 auto;
+  border-radius: 15px;
 }
 
 #contacts {
@@ -254,6 +316,9 @@ i.fa {
   padding: 15px;
   cursor: pointer;
   z-index: 3;
+}
+.phone-widget:hover {
+  background: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #AE8646 49.48%, #A47B3E 63.02%, #976F35 75.52%, #8C642C 88.02%, #845B26 100%);
 }
 .phone-widget svg {
   width: 25px;
@@ -305,10 +370,112 @@ i.fa {
   .container {
     padding: 0 50px;
   }
+
+  #contacts .contacts {
+    max-width: 33%;
+  }
 }
 @media screen and (max-width: 635px) {
   .container {
-    padding: 0 50px;
+    padding: 0 20px;
+  }
+
+  .menu__nav {
+    display: none;
+  }
+
+  .menu__burger {
+    display: block;
+  }
+
+  #first-screen .first-screen__subtitle {
+    font-size: 2rem;
+  }
+  #first-screen .first-screen__title {
+    font-size: 3rem;
+  }
+
+  #booking .section__main {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+  }
+
+  .room__wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    grid-column-gap: 30px;
+  }
+  .room__wrapper .room__gallery img {
+    width: 100%;
+    border-radius: 15px;
+  }
+  .room__wrapper .room__info .room__text {
+    flex: 0 0 auto;
+    margin-bottom: 15px;
+  }
+
+  #gallery .container {
+    padding: 0;
+  }
+  #gallery .container img {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #contacts .contacts {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    border-radius: 0;
+    background: #333333;
+  }
+
+  .footer {
+    padding: 20px 0;
+  }
+  .footer .footer__wrapper {
+    grid-template-areas: "img img" "text text";
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .footer .footer__wrapper img {
+    width: 50%;
+    grid-area: img;
+  }
+  .footer .footer-nav {
+    grid-area: text;
+    grid-template-areas: "text1 text2" "text3 text3";
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    justify-items: center;
+  }
+  .footer .footer-nav .footer-nav__item {
+    margin-bottom: 10px;
+  }
+  .footer .footer-nav .footer-nav__item .item__title {
+    margin-bottom: 10px;
+  }
+  .footer .footer-nav .footer-nav__item .item__link {
+    margin-bottom: 5px;
+  }
+  .footer .footer-nav .footer-nav__item .item__link svg {
+    width: 10px;
+    height: 10px;
+  }
+  .footer .footer-nav .footer-nav__item .item__link svg g {
+    fill: #fff;
+  }
+  .footer .footer-nav .footer-nav__item:nth-child(1) {
+    grid-area: text1;
+  }
+  .footer .footer-nav .footer-nav__item:nth-child(2) {
+    grid-area: text2;
+  }
+  .footer .footer-nav .footer-nav__item:nth-child(3) {
+    grid-area: text3;
+    text-align: center;
   }
 }
 

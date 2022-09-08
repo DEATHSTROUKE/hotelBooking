@@ -19,6 +19,9 @@
                     <img src="./img/logo.svg" alt="logo" class="logo__img"/>
                     <div class="logo__text">Grand Уют</div>
                 </div>
+                <button class="menu__burger">
+                    <span></span>
+                </button>
                 <nav class="menu__nav">
                     <a class="nav__item" href="#about">Об отеле</a>
                     <a class="nav__item" href="#booking">Бронирование</a>
@@ -138,7 +141,7 @@ c392 0 406 1 425 20 19 19 20 33 20 295 0 268 0 275 20 275 19 0 20 7 20 138
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section class="section" id="rooms">
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__title"><h2>Одноместные номера</h2></div>
@@ -217,49 +220,48 @@ c392 0 406 1 425 20 19 19 20 33 20 295 0 268 0 275 20 275 19 0 20 7 20 138
             </div>
         </section>
         <section class="section" id="contacts">
-<!--            <div class="section__wrapper">-->
-<!--                <div class="contacts">-->
-<!--                    <div class="contacts__title"><h2>Контакты</h2></div>-->
-<!--                    <div class="contacts__items">-->
-<!--                        <div class="contacts__item">-->
-<!--                            <div class="item__title"><h3>Адрес</h3></div>-->
-<!--                            <div class="item__info">Первомайская ул., 1, п. г. т. Мотыгино</div>-->
-<!--                        </div>-->
-<!--                        <div class="contacts__item">-->
-<!--                            <div class="item__title"><h3>Телефон</h3></div>-->
-<!--                            <div class="item__info">-->
-<!--                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"-->
-<!--                                     width="169.000000pt" height="169.000000pt" viewBox="0 0 169.000000 169.000000"-->
-<!--                                     preserveAspectRatio="xMidYMid meet">-->
+            <div class="section__wrapper">
+                <script type="text/javascript" charset="utf-8" async
+                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2b0cae79498f0a0f0d5a06c25045945f6fd0229c6f75a72101585b588be11c7f&amp;width=100%25&amp;height=550&amp;lang=ru_RU&amp;scroll=false"></script>
+                <div class="contacts">
+                    <div class="contacts__title"><h2>Контакты</h2></div>
+                    <div class="contacts__items">
+                        <div class="contacts__item">
+                            <div class="item__title"><h3>Адрес</h3></div>
+                            <div class="item__info">Первомайская ул., 1, п. г. т. Мотыгино</div>
+                        </div>
+                        <div class="contacts__item">
+                            <div class="item__title"><h3>Телефон</h3></div>
+                            <div class="item__info">
+                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                     width="169.000000pt" height="169.000000pt" viewBox="0 0 169.000000 169.000000"
+                                     preserveAspectRatio="xMidYMid meet">
 
-<!--                                    <g transform="translate(0.000000,169.000000) scale(0.100000,-0.100000)"-->
-<!--                                       fill="#000000" stroke="none">-->
-<!--                                        <path d="M275 1676 c-39 -18 -185 -169 -218 -226 -98 -172 -67 -367 93 -578-->
-<!--88 -116 678 -697 769 -757 140 -92 269 -128 387 -108 105 18 167 55 276 162-->
-<!--107 107 121 137 98 214 -23 79 -247 269 -350 297 -55 15 -88 -2 -158 -80 -68-->
-<!-- -75 -110 -96 -170 -85 -31 5 -71 41 -259 228 -187 188 -223 228 -228 259 -11-->
-<!--60 10 102 85 170 78 70 95 103 80 158 -14 53 -96 174 -171 255 -91 97 -160-->
-<!--124 -234 91z"/>-->
-<!--                                    </g>-->
-<!--                                </svg>-->
-<!--                                88005553535-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="contacts__item">-->
-<!--                            <div class="item__title"><h3>Email</h3></div>-->
-<!--                            <div class="item__info">support@mail.ru</div>-->
-<!--                        </div>-->
-<!--                        <div class="contacts__item">-->
-<!--                            <div class="item__title"><h3>Часы работы</h3></div>-->
-<!--                            <div class="item__info">Ежедневно с 10 до 19</div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <script type="text/javascript" charset="utf-8" async-->
-<!--                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2b0cae79498f0a0f0d5a06c25045945f6fd0229c6f75a72101585b588be11c7f&amp;width=100%25&amp;height=550&amp;lang=ru_RU&amp;scroll=false"></script>-->
-
-<!--            </div>-->
-<!--        </section>-->
+                                    <g transform="translate(0.000000,169.000000) scale(0.100000,-0.100000)"
+                                       fill="#000000" stroke="none">
+                                        <path d="M275 1676 c-39 -18 -185 -169 -218 -226 -98 -172 -67 -367 93 -578
+88 -116 678 -697 769 -757 140 -92 269 -128 387 -108 105 18 167 55 276 162
+107 107 121 137 98 214 -23 79 -247 269 -350 297 -55 15 -88 -2 -158 -80 -68
+ -75 -110 -96 -170 -85 -31 5 -71 41 -259 228 -187 188 -223 228 -228 259 -11
+60 10 102 85 170 78 70 95 103 80 158 -14 53 -96 174 -171 255 -91 97 -160
+124 -234 91z"/>
+                                    </g>
+                                </svg>
+                                88005553535
+                            </div>
+                        </div>
+                        <div class="contacts__item">
+                            <div class="item__title"><h3>Email</h3></div>
+                            <div class="item__info">support@mail.ru</div>
+                        </div>
+                        <div class="contacts__item">
+                            <div class="item__title"><h3>Часы работы</h3></div>
+                            <div class="item__info">Ежедневно с 10 до 19</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="phone-widget">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                  width="169.000000pt" height="169.000000pt" viewBox="0 0 169.000000 169.000000"
