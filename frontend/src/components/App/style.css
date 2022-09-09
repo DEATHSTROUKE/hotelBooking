@@ -172,7 +172,7 @@ i.fa {
 
 #first-screen {
   height: 100vh;
-  background-image: url("./img/first.png");
+  background-image: url("../../img/first.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,15 +1,65 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {ReactComponent as Phone} from '../../img/phone.svg'
+import Logo from "../../img/logo.svg"
 
 const Footer = () => {
     return (
         <footer className="footer">
             <div className="container">
-                <div className="footer__column">
-                    <div className="footer__row">По любым вопросам: <a href="https://t.me/maxijer" target="__blank">@maxijer</a></div>
-                    <div className="footer__row">
-                        © Copyright 2022
-                    </div>
+                <div className="footer__wrapper">
+                    <img src={Logo} alt="logo" className="footer__logo"/>
+                    <nav className="footer-nav">
+                        <div className="footer-nav__item">
+                            <div className="item__title">
+                                <h3>Grand Уют</h3>
+                            </div>
+                            <div className="item__link">
+                                <a href="tel:88005553535">
+                                    <Phone/>
+                                    88005553535</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="mailto:support@mail.ru" target="_blank">support@mail.ru</a>
+                            </div>
+                            <div className="item__link">
+                                Официальный сайт <br/>© 2022
+                            </div>
+                        </div>
+                        <div className="footer-nav__item">
+                            <div className="item__title">
+                                <h3>Навигация</h3>
+                            </div>
+                            <div className="item__link">
+                                <a href="#about">Об отеле</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="#booking">Бронирование</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="#rooms">Номера</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="#gallery">Фотогалерея</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="#contacts">Контакты</a>
+                            </div>
+                        </div>
+                        <div className="footer-nav__item">
+                            <div className="item__title">
+                                <h3>Навигация</h3>
+                            </div>
+                            <div className="item__link">
+                                <a href="#">Правила проживания</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="#">Политика конфиденциальности</a>
+                            </div>
+                            <div className="item__link">
+                                <a href="#">Условия оплаты и бронирования</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </footer>

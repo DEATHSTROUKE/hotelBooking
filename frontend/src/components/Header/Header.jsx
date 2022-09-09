@@ -1,31 +1,26 @@
 import React from 'react'
-import './Header.css';
-import Navbar from "./Navbar/Navbar";
-import CartButton from "./CartButton/CartButton";
-import {ReactComponent as Back} from '../../icons/back.svg'
-import {Link} from "react-router-dom";
+import Logo from "../../img/logo.svg"
 
 const Header = (props) => {
     return (
         <header className="header">
             <div className="container">
-                <nav className="nav">
-                    {(props.page === "main")
-                        ? <>
-                            <Navbar/>
-                            <CartButton/>
-                        </>
-                        : <>
-                            <div className="top__menu-back">
-                                <div className="menu__item-back">
-                                    <Link to="/">
-                                        <Back />
-                                        <div className="menu__item-back_back">Назад к меню</div>
-                                    </Link></div>
-                            </div>
-                        </>
-                    }
-                </nav>
+                <div className="menu__wrapper">
+                    <div className="menu__logo">
+                        <img src={Logo} alt="logo" className="logo__img"/>
+                        <div className="logo__text">Grand Уют</div>
+                    </div>
+                    <button className="menu__burger">
+                        <span/>
+                    </button>
+                    <nav className="menu__nav">
+                        <a className="nav__item" href="#about">Об отеле</a>
+                        <a className="nav__item" href="#booking">Бронирование</a>
+                        <a className="nav__item" href="#rooms">Номера</a>
+                        <a className="nav__item" href="#gallery">Фотогалерея</a>
+                        <a className="nav__item" href="#contacts">Контакты</a>
+                    </nav>
+                </div>
             </div>
         </header>
     );

@@ -1,27 +1,27 @@
 import React from 'react'
-import Category from "./Category/Category";
-import CartButtonMobile from "./Category/CartButtonMobile/CartButtonMobile";
-import Cart from "./Cart/Cart";
-import store from "../../store/store";
 import {observer} from "mobx-react-lite";
+import FirstScreen from "./sections/FirstScreen";
+import Booking from "./sections/Booking";
+import About from "./sections/About";
+import Room from "./sections/Room";
+import Gallery from "./sections/Gallery";
+import Contacts from "./sections/Contacts";
+import {ReactComponent as Phone} from "../../img/phone.svg";
+
 
 const Main = (props) => {
     return (
-        <main className={props.page === "main" ? "main" : "main main-cart"}>
-            <div className="container">
-                {props.page === "main" ?
-                    <div className="categories">
-                        {
-                            store.listCategory.map((item) => {
-                                return <Category title={item.title} id={item.id} key={item.id}/>
-                            })
-                        }
-                    </div>
-                    :
-                    <Cart/>
-                }
+        <main className="main">
+            <FirstScreen/>
+            <Booking/>
+            <About/>
+            <Room/>
+            <Room/>
+            <Gallery/>
+            <Contacts/>
+            <div className="phone-widget">
+                <Phone/>
             </div>
-            {props.page === "main" && <CartButtonMobile/>}
         </main>
     );
 }
