@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import CustomCarousel from "../../CustomCarousel/Carousel";
+import store from "../../../store/store";
 
 const Gallery = () => {
     return (
@@ -8,7 +10,7 @@ const Gallery = () => {
                     <div className="section__title"><h2>Фотогалерея</h2></div>
                     <div className="section__main">
                         <div className="gallery">
-                            <img src={require("../../../img/XXXL.webp")} alt="gallery"/>
+                            <CustomCarousel/>
                         </div>
                     </div>
                 </div>

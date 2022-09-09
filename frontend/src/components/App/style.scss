@@ -24,6 +24,7 @@ body {
   padding: 0;
   outline: none;
   font-size: 14px;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -66,7 +67,7 @@ i.fa {
   background: rgba(0, 0, 0, .6);
   width: 100%;
   padding: 10px 0;
-  scroll-behavior: smooth;
+  z-index: 2;
 }
 
 .menu__burger {
@@ -100,7 +101,7 @@ i.fa {
     position: absolute;
     content: '';
     width: 20px;
-    height: 2px;
+    height: 1.5px;
     background: $white;
     bottom: 25%;
     left: 50%;
@@ -126,10 +127,12 @@ i.fa {
     span {
       opacity: 0;
     }
+
     &::after {
       top: 48%;
       transform: translate(-52%, -52%) rotate(45deg);
     }
+
     &::before {
       bottom: 47%;
       transform: translate(-52%, -52%) rotate(-45deg);
@@ -300,6 +303,7 @@ i.fa {
 
     .room__text {
       flex: 1 1 auto;
+
       .text__title {
         margin-bottom: 5px;
       }
@@ -309,6 +313,7 @@ i.fa {
       .cost__title {
         margin-bottom: 10px;
       }
+
       .cost__btn {
         display: block;
         border: 2px solid $main;
@@ -329,7 +334,6 @@ i.fa {
   .gallery {
     img {
       display: block;
-      width: 80%;
       margin: 0 auto;
       border-radius: 15px;
     }
@@ -367,6 +371,7 @@ i.fa {
 
       .item__info {
         svg {
+          margin-right: 5px;
           width: 10px;
           height: 10px;
 
@@ -424,6 +429,7 @@ i.fa {
   .footer__wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr;
+
     img {
       display: block;
       width: 75%;
@@ -434,15 +440,19 @@ i.fa {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 10px;
+
     .footer-nav__item {
       .item__title {
         margin-bottom: 10px;
       }
+
       .item__link {
         margin-bottom: 5px;
+
         svg {
           width: 10px;
           height: 10px;
+          margin-right: 5px;
           g {
             fill: $white;
           }
@@ -471,8 +481,35 @@ i.fa {
     padding: 0 20px;
   }
 
+  .header.menu-open {
+    z-index: 11;
+
+    .menu__logo {
+      z-index: 12;
+    }
+  }
+
   .menu__nav {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background: $black80;
+    transform: translateX(100vw);
+    transition: transform ease .3s;
+
+    .nav__item {
+      font-size: 1.4rem;
+    }
+  }
+
+  .menu__nav.menu-open {
+    transform: translateX(0);
   }
 
   .menu__burger {
@@ -522,9 +559,10 @@ i.fa {
   #gallery {
     .container {
       padding: 0;
+
       img {
         width: 100%;
-        border-radius: 0;
+        border-radius: 15px;
       }
     }
   }
@@ -549,6 +587,7 @@ i.fa {
       grid-template-areas: 'img img' 'text text';
       grid-template-columns: 1fr 1fr;
       justify-items: center;
+
       img {
         width: 50%;
         grid-area: img;
@@ -564,6 +603,7 @@ i.fa {
 
       .footer-nav__item {
         margin-bottom: 10px;
+
         .item__title {
           margin-bottom: 10px;
         }

@@ -20,7 +20,7 @@ const Main = (props) => {
             <Gallery/>
             <Contacts/>
             <div className="phone-widget">
-                <Phone/>
+                <a href="tel:88005553535"><Phone/></a>
             </div>
         </main>
     );
