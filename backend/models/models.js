@@ -18,6 +18,7 @@ const Booking = sequelize.define('booking', {
     email: {type: DataTypes.STRING, allowNull: false},
     phone: {type: DataTypes.STRING, allowNull: false},
     first_date: {type: DataTypes.DATEONLY, allowNull: false},
+    last_date: {type: DataTypes.DATEONLY, allowNull: false},
     paid: {type: DataTypes.INTEGER, defaultValue: 0}
 })
 

@@ -6,6 +6,8 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import store from "../../store/store";
+import Choose from "../Main/Choose";
+import BookRoom from "../Main/BookRoom";
 
 const App = () => {
     return (
@@ -14,14 +16,14 @@ const App = () => {
                 <Route path="/choose" element={
                     <>
                         <Header page="choose"/>
-                        <Main page="choose"/>
+                        <Choose />
                         <Footer/>
                     </>
                 }/>
                 <Route path="/booking" element={
                     <>
                         <Header page="booking"/>
-                        <Main page="booking"/>
+                        <BookRoom />
                         <Footer/>
                     </>
                 }/>

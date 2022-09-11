@@ -1,7 +1,9 @@
 import React from 'react';
 import CustomCarousel from "../../CustomCarousel/Carousel";
+import Photo from "../../../img/room1.jpg";
 
 const Room = () => {
+    let imgs = [Photo, Photo, Photo, Photo]
     return (
         <section className="section" id="rooms">
             <div className="container">
@@ -11,7 +13,7 @@ const Room = () => {
                         <div className="room__wrapper">
                             <div className="room__gallery">
                                 {/*<img src={require('../../../img/room1.jpg')} alt="room gallery"/>*/}
-                                <CustomCarousel />
+                                <CustomCarousel imgs={[Photo, Photo, Photo, Photo]}/>
                             </div>
                             <div className="room__info">
                                 <div className="room__text">

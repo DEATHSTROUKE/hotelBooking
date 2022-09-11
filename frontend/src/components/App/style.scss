@@ -242,20 +242,18 @@ i.fa {
   position: relative;
   z-index: 4;
 
-  svg {
-    fill: $white;
-    width: 20px;
-    height: 20px;
-
-    g {
-      fill: $white;
-    }
+  .section__wrapper {
+    overflow: visible;
   }
 
   .section__main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 20px;
+
+    a {
+      display: flex;
+    }
   }
 
   .booking__btn {
@@ -266,6 +264,18 @@ i.fa {
     background: $gradient;
     padding: 10px 20px;
     border-radius: 15px;
+    width: 100%;
+
+    svg {
+      fill: $white;
+      width: 20px;
+      height: 20px;
+
+      g {
+        fill: $white;
+      }
+    }
+
 
     &:hover {
       background: $gradient2;
@@ -277,10 +287,15 @@ i.fa {
     }
   }
 
+  .booking__select {
+    color: black;
+  }
+
   .booking__cancel {
     text-align: center;
     margin-top: 10px;
   }
+
 }
 
 //ROOMS
@@ -453,6 +468,7 @@ i.fa {
           width: 10px;
           height: 10px;
           margin-right: 5px;
+
           g {
             fill: $white;
           }

@@ -5,7 +5,7 @@ const Contacts = () => {
     useEffect(() => {
         const script = document.createElement("script");
 
-        const height = window.innerWidth < 635 ? window.innerWidth : 550
+        const height = (window.innerWidth < 635) ? window.innerWidth : 550
         script.src = `https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2b0cae79498f0a0f0d5a06c25045945f6fd0229c6f75a72101585b588be11c7f&amp;width=100%25&amp;height=${height}&amp;lang=ru_RU&amp;scroll=false`;
         script.async = true;
 
