@@ -10,12 +10,18 @@ const Contacts = () => {
         script.async = true;
 
         document.getElementById('map').appendChild(script);
+        script.addEventListener('load', () => {
+            document.querySelector('iframe').height = `${height}px`
+        })
+        return () => {
+            document.getElementById('map').innerText = ''
+        }
     }, [])
 
     return (
         <section className="section" id="contacts">
             <div className="section__wrapper">
-                <div  id="map" />
+                <div id="map"/>
                 <div className="contacts">
                     <div className="contacts__title"><h2>Контакты</h2></div>
                     <div className="contacts__items">
