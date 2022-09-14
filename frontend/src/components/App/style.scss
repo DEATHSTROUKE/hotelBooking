@@ -10,7 +10,6 @@ $gradient2: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #
 
 html, body {
   height: 100%;
-  scroll-padding-top: 100px;
 }
 
 body {
@@ -30,6 +29,7 @@ body {
 a {
   text-decoration: none;
   color: $white;
+  cursor: pointer;
 
   &:hover {
     color: $main;
@@ -47,6 +47,9 @@ i.fa {
   cursor: pointer;
 }
 
+#root {
+  height: 100%;
+}
 
 .wrapper {
   min-height: 100%;
@@ -68,6 +71,10 @@ i.fa {
   width: 100%;
   padding: 10px 0;
   z-index: 2;
+}
+
+.header-relative {
+  position: relative;
 }
 
 .menu__burger {
@@ -371,7 +378,7 @@ i.fa {
     position: absolute;
     top: 10%;
     left: 50px;
-    z-index: 5;
+    z-index: 1;
 
     .contacts__title {
       margin-bottom: 10px;

@@ -1,6 +1,5 @@
 html, body {
   height: 100%;
-  scroll-padding-top: 100px;
 }
 
 body {
@@ -20,6 +19,7 @@ body {
 a {
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
 }
 a:hover {
   color: #EAA649;
@@ -34,6 +34,10 @@ button {
 
 i.fa {
   cursor: pointer;
+}
+
+#root {
+  height: 100%;
 }
 
 .wrapper {
@@ -54,6 +58,10 @@ i.fa {
   width: 100%;
   padding: 10px 0;
   z-index: 2;
+}
+
+.header-relative {
+  position: relative;
 }
 
 .menu__burger {
@@ -297,7 +305,7 @@ i.fa {
   position: absolute;
   top: 10%;
   left: 50px;
-  z-index: 5;
+  z-index: 1;
 }
 #contacts .contacts .contacts__title {
   margin-bottom: 10px;

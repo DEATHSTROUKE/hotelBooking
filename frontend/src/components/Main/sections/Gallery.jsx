@@ -1,12 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import CustomCarousel from "../../CustomCarousel/Carousel";
-import store from "../../../store/store";
-import Photo from '../../../img/room1.jpg'
 
-
-const Gallery = () => {
-    let imgs = [Photo, Photo, Photo, Photo]
-
+const Gallery = ({imgs}) => {
     return (
         <section className="section" id="gallery">
             <div className="container">

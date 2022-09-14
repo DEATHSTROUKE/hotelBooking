@@ -3,18 +3,24 @@ import {ReactComponent as Phone} from "../../../img/phone.svg";
 
 const Contacts = () => {
     useEffect(() => {
-        const script = document.createElement("script");
+        try {
+            const script = document.createElement("script");
 
-        const height = (window.innerWidth < 635) ? window.innerWidth : 550
-        script.src = `https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2b0cae79498f0a0f0d5a06c25045945f6fd0229c6f75a72101585b588be11c7f&amp;width=100%25&amp;height=${height}&amp;lang=ru_RU&amp;scroll=false`;
-        script.async = true;
+            const height = (window.innerWidth < 635) ? window.innerWidth : 550
+            script.src = `https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2b0cae79498f0a0f0d5a06c25045945f6fd0229c6f75a72101585b588be11c7f&amp;width=100%25&amp;height=${height}&amp;lang=ru_RU&amp;scroll=false`;
+            script.async = true;
 
-        document.getElementById('map').appendChild(script);
-        script.addEventListener('load', () => {
-            document.querySelector('iframe').height = `${height}px`
-        })
-        return () => {
-            document.getElementById('map').innerText = ''
+            document.getElementById('map').appendChild(script);
+            script.addEventListener('load', () => {
+                document.querySelector('iframe').height = `${height}px`
+            })
+            return () => {
+                let el = document.getElementById('map')
+                if (el) {
+                    el.removeChild(el.lastChild)
+                }
+            }
+        } catch (e) {
         }
     }, [])
 

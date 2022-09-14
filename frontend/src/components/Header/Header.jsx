@@ -1,17 +1,29 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import Logo from "../../img/logo.svg"
 import store from '../../store/store'
 import {observer} from "mobx-react-lite";
 import cn from 'classnames'
 
-const Header = (props) => {
+const Header = ({page, children}) => {
+    const ref = useRef(null);
+    function setHeaderScrollPadding() {
+        const height = ref.current.clientHeight
+        document.body.style.scrollPaddingTop = `${height}px`
+        document.documentElement.style.scrollPaddingTop = `${height}px`
+    }
+    useEffect(() => {
+        window.addEventListener('load', setHeaderScrollPadding)
+        return () => {
+            window.removeEventListener('load', setHeaderScrollPadding)
+        }
+    })
     const onMenuOpen = () => {
         store.setMenuToggle()
         document.body.style.overflowY = store.isMenuOpen ? 'hidden' : 'scroll'
     }
 
     return (
-        <header className={cn("header", {"menu-open": store.isMenuOpen})}>
+        <header className={cn("header", {"menu-open": store.isMenuOpen}, {"header-relative": page!=="main"})} ref={ref}>
             <div className="container">
                 <div className="menu__wrapper">
                     <div className="menu__logo">
@@ -23,17 +35,9 @@ const Header = (props) => {
                     </button>
                     {
                         window.innerWidth < 635 ? <nav className={cn("menu__nav", {"menu-open": store.isMenuOpen})} onClick={onMenuOpen}>
-                            <a className="nav__item" href="#about">Об отеле</a>
-                            <a className="nav__item" href="#booking">Бронирование</a>
-                            <a className="nav__item" href="#rooms">Номера</a>
-                            <a className="nav__item" href="#gallery">Фотогалерея</a>
-                            <a className="nav__item" href="#contacts">Контакты</a>
+                            {children.map((item) => item)}
                         </nav> : <nav className={"menu__nav"}>
-                            <a className="nav__item" href="#about">Об отеле</a>
-                            <a className="nav__item" href="#booking">Бронирование</a>
-                            <a className="nav__item" href="#rooms">Номера</a>
-                            <a className="nav__item" href="#gallery">Фотогалерея</a>
-                            <a className="nav__item" href="#contacts">Контакты</a>
+                            {children.map((item) => item)}
                         </nav>
                     }
 
