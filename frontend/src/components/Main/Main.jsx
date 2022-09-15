@@ -22,9 +22,8 @@ const Main = (props) => {
     }]
     let imgs = [{id: 1, img: Photo}, {id: 2, img: Photo}, {id: 3, img: Photo}, {id: 4, img: Photo}]
     const onBookingClick = (amount) => {
-        store.setFirstDate(null)
-        store.setLastDate(null)
-        store.setGuestsCount(amount)
+        store.setGuestsCount(store.options.find((item) => item.value === amount))
+        navigate('/choose')
     }
 
     const navigate = useNavigate()
@@ -47,14 +46,14 @@ const Main = (props) => {
                   description={<Description items={items}/>}
                   imgs={imgs}
                   roomCost={2500}
-                  btnText="Забронировать"
+                  btnText="Выбрать"
                   onBtnClick={() => onBookingClick(1)}
             />
             <Room title="Двухместные номера"
                   description={<Description items={items.slice(1, 4)}/>}
                   imgs={imgs}
                   roomCost={2000}
-                  btnText="Забронировать"
+                  btnText="Выбрать"
                   onBtnClick={() => onBookingClick(2)}
             />
             <Gallery imgs={imgs}/>

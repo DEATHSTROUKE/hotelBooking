@@ -15,6 +15,7 @@ const Choose = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         const fetchData = async () => {
             let data = await fetchDataRooms
             data = await data.clone().json()

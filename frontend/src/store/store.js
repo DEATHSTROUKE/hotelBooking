@@ -12,9 +12,7 @@ class Store {
     ];
     freeRooms = []
     chosenRoomId = null
-    name = []
-    surname = []
-    middlename = []
+    guests = []
     email = null
     phone = null
 
@@ -36,6 +34,10 @@ class Store {
 
     setGuestsCount(count) {
         this.guestsCount = count
+        this.guests = []
+        for (let i = 0; i < count.value; i++) {
+            this.guests.push({id: i, name: '', surname: '', middlename: ''})
+        }
     }
 
     setFreeRooms(rooms) {
@@ -48,15 +50,15 @@ class Store {
     }
 
     setName(ind, name) {
-        this.name[ind] = name
+        this.guests[ind].name = name
     }
 
     setSurname(ind, surname) {
-        this.surname[ind] = surname
+        this.guests[ind].surname = surname
     }
 
     setMiddlename(ind, name) {
-        this.middlename[ind] = name
+        this.guests[ind].middlename = name
     }
 
     setEmail(email) {

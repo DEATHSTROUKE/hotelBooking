@@ -11,8 +11,9 @@ export const Description = ({items}) => {
 export const ChooseRoomDescription = ({girl_only, amount}) => {
     return (
         <ul>
-            <li >Комната на {amount} гостя/гостей</li>
+            <li>Комната на {amount} гостя/гостей</li>
             {!girl_only ? <li style={{color: 'red'}}>Комната только для девочек</li> : ''}
+            {/*#TODO Убрать !*/}
         </ul>
     );
 }
