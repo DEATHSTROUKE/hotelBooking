@@ -5,7 +5,7 @@ import GuestData from "./sections/GuestData";
 
 const BookRoom = () => {
     useEffect(() => {
-        store.setGuestsCount({value: 2})
+        window.scrollTo(0, 0)
     }, [])
     const onClickBooking = () => {
         store.guests.map((item) => {
@@ -14,26 +14,34 @@ const BookRoom = () => {
     }
 
     const onChangeItem = (id, type, value) => {
-        if (type === 'name'){store.setName(id, value)}
-        if (type === 'surname'){store.setSurname(id, value)}
-        if (type === 'middlename'){store.setMiddlename(id, value)}
+        if (type === 'name') {
+            store.setName(id, value)
+        }
+        if (type === 'surname') {
+            store.setSurname(id, value)
+        }
+        if (type === 'middlename') {
+            store.setMiddlename(id, value)
+        }
         console.log(id, type)
     }
 
     return (
         <main className="main">
-            <div><input type="text" placeholder="Введите телефон" value={store.phone}
-                        onChange={(e) => store.setPhone(e.target.value)}/></div>
-            <div><input type="text" placeholder="Введите Email" value={store.email}
-                        onChange={(e) => store.setPhone(e.target.value)}/></div>
-            {store.guests.map((item) => <GuestData id={item.id}
-                                                   key={item.id}
-                                                   name={item.name}
-                                                   surname={item.surname}
-                                                   middlename={item.middlename}
-                                                   onChangeItem={onChangeItem}
-            />)}
-            <button onClick={onClickBooking}>Забронировать</button>
+            <section className="section">
+                <div><input type="text" placeholder="Введите телефон" value={store.phone}
+                            onChange={(e) => store.setPhone(e.target.value)}/></div>
+                <div><input type="text" placeholder="Введите Email" value={store.email}
+                            onChange={(e) => store.setEmail(e.target.value)}/></div>
+                {store.guests.map((item) => <GuestData id={item.id}
+                                                       key={item.id}
+                                                       name={item.name}
+                                                       surname={item.surname}
+                                                       middlename={item.middlename}
+                                                       onChangeItem={onChangeItem}
+                />)}
+                <button onClick={onClickBooking}>Забронировать</button>
+            </section>
         </main>
     );
 };

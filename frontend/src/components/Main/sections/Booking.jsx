@@ -59,7 +59,7 @@ const Booking = ({title, onBtnClick, btnText, isCancelBtn}) => {
                                 selectsEnd
                                 startDate={store.firstDate}
                                 endDate={store.lastDate}
-                                minDate={store.firstDate}
+                                minDate={Math.max(new Date(), store.firstDate)}
                                 dateFormat="dd.MM.yyyy"
                             />
                         </div>

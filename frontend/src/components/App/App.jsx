@@ -11,6 +11,7 @@ const App = () => {
     const navigate = useNavigate()
     const onBackClick = () => {
         navigate(-1)
+        window.scrollTo(0, 0)
     }
     return (
         <Routes>

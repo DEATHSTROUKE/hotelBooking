@@ -5,7 +5,6 @@ class Store {
     firstDate = null
     lastDate = null
     guestsCount = 0
-    showChooseDatePanel = true
     options = [
         {value: 1, label: 'Гостей: 1'},
         {value: 2, label: 'Гостей: 2'}
@@ -13,8 +12,9 @@ class Store {
     freeRooms = []
     chosenRoomId = null
     guests = []
-    email = null
-    phone = null
+    email = ''
+    phone = ''
+    isBooking = false
 
     constructor() {
         makeAutoObservable(this)
