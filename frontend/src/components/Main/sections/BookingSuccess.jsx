@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import store from "../../../store/store";
+import DateToCorrectFormat from "../../../functions/DateToCorrectFormat";
 
 const BookingSuccess = () => {
     return (
@@ -12,7 +14,9 @@ const BookingSuccess = () => {
                     <div className="section__main">
                         <div style={{textAlign: "center"}}>
                             <div>
-                                Вся информация направлена на почту. Отменить бронирование можно по ссылке из
+                                Бронирование номера с {DateToCorrectFormat(store.firstDate)} по {DateToCorrectFormat(store.lastDate)} на {store.guestsCount.value} {store.guestsCount.value === 1 ? 'гостя' : 'гостей'}. Вся
+                                информация направлена на почту {store.email}.
+                                <br/>Отменить бронирование можно по ссылке из
                                 почты.
                             </div>
                             <Link to={'/'}>Вернуться на главную</Link>

@@ -4,6 +4,7 @@ import store from "../../store/store";
 import GuestDataInputs from "./sections/GuestDataInputs";
 import BookingSuccess from "./sections/BookingSuccess";
 import {useNavigate} from "react-router-dom";
+import EmptyFieldData from "./sections/EmptyFieldData";
 
 const BookRoom = () => {
     const navigate = useNavigate()
@@ -15,7 +16,8 @@ const BookRoom = () => {
 
     return (
         <main className="main">
-            {store.isBooked ? <BookingSuccess/> : <GuestDataInputs/>}
+            {store.isLoading ? <EmptyFieldData title="Отправка данных..."/> : ''}
+            {!store.isLoading && (store.isBooked ? <BookingSuccess/> : <GuestDataInputs/>)}
         </main>
     );
 };

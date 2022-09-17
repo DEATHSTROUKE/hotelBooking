@@ -4,6 +4,7 @@ import DateToCorrectFormat from "./DateToCorrectFormat";
 
 export const fetchRoomsData = async () => {
     if (store.firstDate && store.lastDate && store.guestsCount) {
+        store.setIsLoading(true)
         const {data} = await axios.get(`${process.env.REACT_APP_API_URL}/booking/get_free_rooms`, {
             params: {
                 first_date: DateToCorrectFormat(store.firstDate),
@@ -11,12 +12,14 @@ export const fetchRoomsData = async () => {
                 amount: store.guestsCount.value
             }
         })
+        store.setIsLoading(false)
         store.setFreeRooms(data)
     }
 }
 
 export const fetchPostBooking = async () => {
     if (store.firstDate && store.lastDate && store.guestsCount && store.phone && store.email && store.chosenRoomId) {
+        store.setIsLoading(true)
         for (let i of store.guests) {
             const {data, status} = await axios.post(`${process.env.REACT_APP_API_URL}/booking/`, {
                 name: i.name,
@@ -30,8 +33,9 @@ export const fetchPostBooking = async () => {
             })
             if (status === 200) {
                 console.log(data)
-                store.setIsBooked(true)
             }
         }
+        store.setIsLoading(false)
+        store.setIsBooked(true)
     }
 }

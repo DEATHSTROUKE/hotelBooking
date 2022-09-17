@@ -15,6 +15,7 @@ class Store {
     email = ''
     phone = ''
     isBooked = false
+    isLoading = false
 
     constructor() {
         makeAutoObservable(this)
@@ -72,6 +73,9 @@ class Store {
         this.isBooked = state
     }
 
+    setIsLoading(state) {
+        this.isLoading = state
+    }
 }
 
 export default new Store()

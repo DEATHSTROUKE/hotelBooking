@@ -22,6 +22,7 @@ const Choose = () => {
 
     const onNextClick = (id) => {
         store.setChosenRoomId(id)
+        store.setGuestsCount(store.guestsCount)
         navigate('/booking')
     }
 
@@ -51,8 +52,9 @@ const Choose = () => {
                                         {!store.lastDate ? <li>Дату выезда</li> : ''}
                                         {!store.guestsCount ? <li>Количество гостей</li> : ''}
                                     </ul>}/> : ''}
-                {(store.firstDate && store.lastDate && store.guestsCount && store.freeRooms.length === 0) ?
+                {(store.firstDate && store.lastDate && store.guestsCount && store.freeRooms.length === 0 && !store.isLoading) ?
                     <EmptyFieldData title="Подходящей комнаты не найдено"/> : ''}
+                {store.isLoading ? <EmptyFieldData title="Загрузка доступных комнат..."/> : ''}
             </div>
         </main>
     );
