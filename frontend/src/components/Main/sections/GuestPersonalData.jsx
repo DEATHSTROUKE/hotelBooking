@@ -4,21 +4,27 @@ const GuestPersonalData = ({id, name, surname, middlename, onChangeItem}) => {
     return (
         <div className="guest-data__wrapper">
             <h3>Гость №{id + 1}</h3>
-            <div className="input"><input type="text"
-                        placeholder="Введите фамилию"
-                        value={name}
-                        onChange={(e) =>
-                            onChangeItem(id, "name", e.target.value)}/></div>
-            <div className="input"><input type="text"
-                        placeholder="Введите имя"
+            <div className="input">
+                <label>Введите фамилию</label>
+                <input type="text"
                         value={surname}
                         onChange={(e) =>
-                            onChangeItem(id, "surname", e.target.value)}/></div>
-            <div className="input"><input type="text"
-                        placeholder="Введите отчество"
+                            onChangeItem(id, "surname", e.target.value)}/>
+            </div>
+            <div className="input">
+                <label>Введите имя</label>
+                <input type="text"
+                        value={name}
+                        onChange={(e) =>
+                            onChangeItem(id, "name", e.target.value)}/>
+            </div>
+            <div className="input">
+                <label>Введите отчество</label>
+                <input type="text"
                         value={middlename}
                         onChange={(e) =>
-                            onChangeItem(id, "middlename", e.target.value)}/></div>
+                            onChangeItem(id, "middlename", e.target.value)}/>
+            </div>
         </div>
     );
 };

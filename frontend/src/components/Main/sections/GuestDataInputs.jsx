@@ -2,13 +2,28 @@ import React from 'react';
 import store from "../../../store/store";
 import GuestPersonalData from "./GuestPersonalData";
 import {observer} from "mobx-react-lite";
+import {fetchPostBooking} from "../../../functions/fetchRequests";
 
 const GuestDataInputs = () => {
     const onClickBooking = () => {
-        store.guests.map((item) => {
-            console.log(item.id, item.name, item.surname, item.middlename)
-        })
-        store.setIsBooked(true)
+        if (store.email === '') {
+            alert('Введите email')
+        } else if (store.phone === '') {
+            alert('Введите номер телефона')
+        } else {
+            let fl = true
+            for (let i of store.guests) {
+                if (i.name === '' || i.surname === '' || i.middlename === '') {
+                    fl = false
+                    break
+                }
+            }
+            if (!fl) {
+                alert('Заполните данные о гостях')
+            } else {
+                fetchPostBooking()
+            }
+        }
     }
 
     const onChangeItem = (id, type, value) => {
@@ -21,7 +36,6 @@ const GuestDataInputs = () => {
         if (type === 'middlename') {
             store.setMiddlename(id, value)
         }
-        console.log(id, type)
     }
 
     return (
@@ -33,12 +47,14 @@ const GuestDataInputs = () => {
                     </div>
                     <div className="section__main">
                         <div className="input">
-                            <input type="text" placeholder="Введите телефон" value={store.phone}
-                                                      onChange={(e) => store.setPhone(e.target.value)}/>
+                            <label>Введите телефон</label>
+                            <input type="text" value={store.phone}
+                                   onChange={(e) => store.setPhone(e.target.value)}/>
                         </div>
                         <div className="input">
-                            <input type="text" placeholder="Введите Email" value={store.email}
-                                                      onChange={(e) => store.setEmail(e.target.value)}/>
+                            <label>Введите email</label>
+                            <input type="text" value={store.email}
+                                   onChange={(e) => store.setEmail(e.target.value)}/>
                         </div>
                         {store.guests.map((item) => <GuestPersonalData id={item.id}
                                                                        key={item.id}

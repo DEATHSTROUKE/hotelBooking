@@ -395,6 +395,11 @@ i.fa {
 
 #guest-data-inp .input {
   margin-bottom: 7px;
+  display: flex;
+  flex-direction: column;
+}
+#guest-data-inp .input label {
+  padding: 5px 10px;
 }
 #guest-data-inp .input input {
   width: 75%;

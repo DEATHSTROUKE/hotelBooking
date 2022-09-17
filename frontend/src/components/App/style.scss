@@ -503,6 +503,12 @@ i.fa {
 #guest-data-inp {
   .input {
     margin-bottom: 7px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      padding: 5px 10px;
+    }
 
     input {
       width: 75%;

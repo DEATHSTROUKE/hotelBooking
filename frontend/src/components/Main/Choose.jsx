@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import axios from "axios";
 import store from "../../store/store";
 import DateToCorrectFormat from "../../functions/DateToCorrectFormat";
-import {fetchRoomsData} from "../../functions/fetchRoomsData";
+import {fetchRoomsData} from "../../functions/fetchRequests";
 import Booking from "./sections/Booking";
 import {observer} from "mobx-react-lite";
 import Room from "./sections/Room";
