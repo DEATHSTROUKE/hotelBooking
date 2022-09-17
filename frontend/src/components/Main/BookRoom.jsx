@@ -1,47 +1,21 @@
 import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import store from "../../store/store";
-import GuestData from "./sections/GuestData";
+import GuestDataInputs from "./sections/GuestDataInputs";
+import BookingSuccess from "./sections/BookingSuccess";
+import {useNavigate} from "react-router-dom";
 
 const BookRoom = () => {
+    const navigate = useNavigate()
     useEffect(() => {
-        window.scrollTo(0, 0)
+        if (!(store.firstDate && store.lastDate && store.guestsCount && store.chosenRoomId)) {
+            navigate(-1)
+        }
     }, [])
-    const onClickBooking = () => {
-        store.guests.map((item) => {
-            console.log(item.id, item.name, item.surname, item.middlename)
-        })
-    }
-
-    const onChangeItem = (id, type, value) => {
-        if (type === 'name') {
-            store.setName(id, value)
-        }
-        if (type === 'surname') {
-            store.setSurname(id, value)
-        }
-        if (type === 'middlename') {
-            store.setMiddlename(id, value)
-        }
-        console.log(id, type)
-    }
 
     return (
         <main className="main">
-            <section className="section">
-                <div><input type="text" placeholder="Введите телефон" value={store.phone}
-                            onChange={(e) => store.setPhone(e.target.value)}/></div>
-                <div><input type="text" placeholder="Введите Email" value={store.email}
-                            onChange={(e) => store.setEmail(e.target.value)}/></div>
-                {store.guests.map((item) => <GuestData id={item.id}
-                                                       key={item.id}
-                                                       name={item.name}
-                                                       surname={item.surname}
-                                                       middlename={item.middlename}
-                                                       onChangeItem={onChangeItem}
-                />)}
-                <button onClick={onClickBooking}>Забронировать</button>
-            </section>
+            {store.isBooked ? <BookingSuccess/> : <GuestDataInputs/>}
         </main>
     );
 };

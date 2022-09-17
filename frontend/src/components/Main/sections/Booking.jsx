@@ -1,5 +1,4 @@
-import React, {forwardRef} from 'react';
-import {ReactComponent as Calendar} from "../../../img/calendar.svg";
+import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {registerLocale} from "react-datepicker";
@@ -7,24 +6,7 @@ import ru from 'date-fns/locale/ru';
 import store from "../../../store/store";
 import {observer} from "mobx-react-lite";
 import Select from "react-select";
-
-const CustomInputFirst = forwardRef(({value, onClick}, ref) => (
-    <button className="booking__btn" ref={ref} onClick={onClick}>
-        <div className="btn__left">{value ? value : "Заезд"}</div>
-        <div className="btn__right">
-            <Calendar/>
-        </div>
-    </button>
-));
-
-const CustomInputSecond = forwardRef(({value, onClick}, ref) => (
-    <button className="booking__btn" ref={ref} onClick={onClick}>
-        <div className="btn__left">{value ? value : "Выезд"}</div>
-        <div className="btn__right">
-            <Calendar/>
-        </div>
-    </button>
-));
+import {customStyles, CustomInputFirst, CustomInputSecond} from '../../../functions/BookingCompSettings'
 
 const Booking = ({title, onBtnClick, btnText, isCancelBtn}) => {
     registerLocale('ru', ru)
@@ -68,6 +50,7 @@ const Booking = ({title, onBtnClick, btnText, isCancelBtn}) => {
                                 value={store.guestsCount}
                                 onChange={(val) => store.setGuestsCount(val)}
                                 options={store.options}
+                                styles={customStyles}
                             />
                         </div>
                         <button className="booking__btn btn_center" onClick={onBtnClick}>

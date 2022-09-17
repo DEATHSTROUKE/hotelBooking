@@ -75,6 +75,10 @@ i.fa {
 
 .header-relative {
   position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("../../img/first.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
 }
 
 .menu__burger {
@@ -264,6 +268,12 @@ i.fa {
     }
   }
 
+  .booking__select {
+    svg {
+      fill: $white;
+    }
+  }
+
   .booking__btn {
     display: flex;
     align-items: center;
@@ -293,6 +303,8 @@ i.fa {
       justify-content: center;
       text-align: center;
     }
+
+
   }
 
   .booking__select {
@@ -487,6 +499,57 @@ i.fa {
 }
 
 
+//BOOKING PAGE
+#guest-data-inp {
+  .input {
+    margin-bottom: 7px;
+
+    input {
+      width: 75%;
+      padding: 10px 10px;
+      border-radius: 10px;
+      border: 1.5px solid gray;
+    }
+  }
+
+  .guest-data__wrapper {
+    margin-top: 25px;
+
+    h3 {
+      margin-bottom: 7px;
+    }
+  }
+
+  .book__btn {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    color: $white;
+    background: $gradient;
+    padding: 10px 45px;
+    border-radius: 15px;
+    justify-content: center;
+
+    &:hover {
+      background: $gradient2;
+    }
+  }
+}
+
+#booking-success {
+  a {
+    color: $main;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
+  }
+}
+
+.rooms-container {
+  min-height: 50vh;
+}
+
 //MEDIA
 
 @media screen and (max-width: 1200px) {
@@ -600,6 +663,30 @@ i.fa {
       max-width: 100%;
       border-radius: 0;
       background: $black801;
+    }
+  }
+
+  #guest-data-inp {
+    .input {
+      margin-bottom: 10px;
+
+      input {
+        width: 100%;
+        padding: 15px 15px;
+      }
+    }
+
+    .guest-data__wrapper {
+      margin-top: 25px;
+
+      h3 {
+        margin-bottom: 10px;
+      }
+    }
+
+    .book__btn {
+      width: 100%;
+      padding: 15px 20px;
     }
   }
 

@@ -5,16 +5,16 @@ class Store {
     firstDate = null
     lastDate = null
     guestsCount = 0
+    guests = []
     options = [
         {value: 1, label: 'Гостей: 1'},
         {value: 2, label: 'Гостей: 2'}
     ];
     freeRooms = []
     chosenRoomId = null
-    guests = []
     email = ''
     phone = ''
-    isBooking = false
+    isBooked = false
 
     constructor() {
         makeAutoObservable(this)
@@ -67,6 +67,9 @@ class Store {
 
     setPhone(phone) {
         this.phone = phone
+    }
+    setIsBooked(state) {
+        this.isBooked = state
     }
 
 }

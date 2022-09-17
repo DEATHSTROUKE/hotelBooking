@@ -62,6 +62,10 @@ i.fa {
 
 .header-relative {
   position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("../../img/first.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
 }
 
 .menu__burger {
@@ -218,6 +222,9 @@ i.fa {
 }
 #booking .section__main a {
   display: flex;
+}
+#booking .booking__select svg {
+  fill: #fff;
 }
 #booking .booking__btn {
   display: flex;
@@ -386,6 +393,46 @@ i.fa {
   fill: #fff;
 }
 
+#guest-data-inp .input {
+  margin-bottom: 7px;
+}
+#guest-data-inp .input input {
+  width: 75%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1.5px solid gray;
+}
+#guest-data-inp .guest-data__wrapper {
+  margin-top: 25px;
+}
+#guest-data-inp .guest-data__wrapper h3 {
+  margin-bottom: 7px;
+}
+#guest-data-inp .book__btn {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: linear-gradient(180deg, #F2CA7A 0%, #E5BB6D 18.75%, #DAAD61 34.9%, #CC9D53 49.48%, #C7964D 63.02%, #BE8C44 75.52%, #B5823C 88.02%, #AD7833 100%);
+  padding: 10px 45px;
+  border-radius: 15px;
+  justify-content: center;
+}
+#guest-data-inp .book__btn:hover {
+  background: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #AE8646 49.48%, #A47B3E 63.02%, #976F35 75.52%, #8C642C 88.02%, #845B26 100%);
+}
+
+#booking-success a {
+  color: #EAA649;
+}
+#booking-success a:hover {
+  filter: brightness(0.7);
+}
+
+.rooms-container {
+  min-height: 50vh;
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     padding: 0 50px;
@@ -475,6 +522,24 @@ i.fa {
     max-width: 100%;
     border-radius: 0;
     background: #333333;
+  }
+
+  #guest-data-inp .input {
+    margin-bottom: 10px;
+  }
+  #guest-data-inp .input input {
+    width: 100%;
+    padding: 15px 15px;
+  }
+  #guest-data-inp .guest-data__wrapper {
+    margin-top: 25px;
+  }
+  #guest-data-inp .guest-data__wrapper h3 {
+    margin-bottom: 10px;
+  }
+  #guest-data-inp .book__btn {
+    width: 100%;
+    padding: 15px 20px;
   }
 
   .footer {

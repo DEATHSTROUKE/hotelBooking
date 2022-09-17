@@ -13,6 +13,9 @@ import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 
 const Main = (props) => {
+    React.useEffect(() => {
+        store.setIsBooked(false)
+    })
     const items = [{id: 1, text: 'Односпальная кровать'}, {id: 2, text: 'Плазменный телевизор'}, {
         id: 3,
         text: 'Wi-fi и кабельное TV'
@@ -39,7 +42,7 @@ const Main = (props) => {
             <Booking title="Забронировать онлайн"
                      btnText="Показать наличие"
                      onBtnClick={chooseRoom}
-                     isCancelBtn={true}
+                     isCancelBtn={false}
             />
             <About/>
             <Room title="Одноместные номера"
