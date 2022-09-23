@@ -9,6 +9,7 @@ router.get('/:id', bookingController.getOne)
 router.post('/', bookingController.create)
 router.put('/', isAdminMiddleware, bookingController.updateObj)
 router.delete('/:id', bookingController.deleteObj)
+router.get('delete_booking/:id', bookingController.deleteObj)
 
 module.exports = router
 

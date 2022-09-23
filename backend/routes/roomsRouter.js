@@ -4,8 +4,8 @@ const roomsController = require('../controllers/roomsController')
 const isAdminMiddleware = require("../middleware/isAdminMiddleware");
 
 
-router.get('/', roomsController.getAll)
-router.get('/:id', roomsController.getOne)
+router.get('/', isAdminMiddleware, roomsController.getAll)
+router.get('/:id', isAdminMiddleware, roomsController.getOne)
 router.post('/', isAdminMiddleware, roomsController.create)
 router.put('/', isAdminMiddleware, roomsController.updateObj)
 router.delete('/:id', isAdminMiddleware, roomsController.deleteObj)

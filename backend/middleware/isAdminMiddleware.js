@@ -5,7 +5,6 @@ module.exports = async function (req, res, next) {
     }
     try {
         const admin_id = req.headers.authorization
-        console.log(admin_id)
         const admin = await Admins.findOne({where: {tg_id: admin_id}})
         if (admin) {
             next()

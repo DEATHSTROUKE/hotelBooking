@@ -1,5 +1,5 @@
 const ApiError = require("../error/ApiError");
-const {Rooms, Admins} = require('../models/models')
+const {Rooms, Admins, Booking} = require('../models/models')
 
 class RoomsController {
     async getAll(req, res) {
@@ -23,7 +23,7 @@ class RoomsController {
         }
     }
 
-    async updateObj(req, res) {
+    async updateObj(req, res, next) {
         try {
             const {id, number, amount, cost, girl_only, count_photos} = req.body
             await Rooms.update({number, amount, cost, girl_only, count_photos}, {where: {id}})
@@ -33,10 +33,23 @@ class RoomsController {
         }
     }
 
-    async deleteObj(req, res) {
-        const {id} = req.params
-        await Rooms.destroy({where: {id}})
-        res.json({success: "ok"})
+    async deleteObj(req, res, next) {
+        try{
+            const {id} = req.params
+            //TODO delete room without bookings
+            const book = await Booking.findOne({where: {roomId: id}})
+            if (book) {
+                return next(ApiError.badRequest('This rooms has bookings'))
+            }
+            try {
+                await Rooms.destroy({where: {id}})
+                res.json({success: "ok"})
+            } catch (e) {
+                return next(ApiError.badRequest(e.message))
+            }
+        } catch (e) {
+            return next(ApiError.badRequest(e.message))
+        }
     }
 }
 

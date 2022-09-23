@@ -36,7 +36,7 @@ class AdminsController {
         }
     }
 
-    async updateObj(req, res) {
+    async updateObj(req, res, next) {
         try {
             const data = req.body
             await Admins.update({tg_id: data.tg_id}, {where: {id: data.id}})
@@ -46,10 +46,14 @@ class AdminsController {
         }
     }
 
-    async deleteObj(req, res) {
-        const {id} = req.params
-        await Admins.destroy({where: {id}})
-        res.json({success: "ok"})
+    async deleteObj(req, res, next) {
+        try{
+            const {id} = req.params
+            await Admins.destroy({where: {id}})
+            res.json({success: "ok"})
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
     }
 }
 
