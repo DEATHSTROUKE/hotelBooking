@@ -15,76 +15,80 @@ class BookingController {
         }
     }
 
-    async getAll(req, res) {
-        const rooms = await Booking.findAll({attributes: [[Sequelize.literal('DISTINCT "roomId"'), 'roomId']]});
-        let first_date = req.query.first_date
-        let last_date = req.query.last_date
-        let obj1 = {}
-        let obj2 = {}
-        let obj_date = {}
-        if (first_date) {
-            first_date = BookingController.dateToDBFormat(first_date)
-            if (first_date === 'bad date') {
-                return next(ApiError.badRequest("Incorrect date format"))
+    async getAll(req, res, next) {
+        try{
+            const rooms = await Booking.findAll({attributes: [[Sequelize.literal('DISTINCT "roomId"'), 'roomId']]});
+            let first_date = req.query.first_date
+            let last_date = req.query.last_date
+            let obj1 = {}
+            let obj2 = {}
+            let obj_date = {}
+            if (first_date) {
+                first_date = BookingController.dateToDBFormat(first_date)
+                if (first_date === 'bad date') {
+                    return next(ApiError.badRequest("Incorrect date format"))
+                }
             }
+            if (last_date) {
+                last_date = BookingController.dateToDBFormat(last_date)
+                if (last_date === 'bad date') {
+                    return next(ApiError.badRequest("Incorrect date format"))
+                }
+            }
+            if (first_date && last_date) {
+                obj1 = {
+                    [Op.and]:
+                        [{first_date: {[Op.gte]: first_date}}, {first_date: {[Op.lte]: last_date}}]
+                }
+                obj2 = {
+                    [Op.and]:
+                        [{last_date: {[Op.gte]: first_date}}, {last_date: {[Op.lte]: last_date}}]
+                }
+                obj_date = {[Op.or]: [obj1, obj2]}
+            } else if (first_date) {
+                obj1 = {
+                    first_date: {[Op.gte]: first_date}
+                }
+                obj2 = {
+                    last_date: {[Op.gte]: first_date}
+                }
+                obj_date = {[Op.or]: [obj1, obj2]}
+            } else if (last_date) {
+                obj1 = {
+                    first_date: {[Op.lte]: last_date}
+                }
+                obj2 = {
+                    last_date: {[Op.lte]: last_date}
+                }
+                obj_date = {[Op.or]: [obj1, obj2]}
+            }
+            const bookings = await Booking.findAll({
+                attributes: ['id',
+                    'name',
+                    'surname',
+                    'middlename',
+                    'email',
+                    'phone',
+                    'paid',
+                    'roomId',
+                    FD,
+                    LD],
+                order: [['first_date', 'ASC'], ['last_date', 'ASC']],
+                where: obj_date
+            })
+            let data = []
+            for (let i of rooms) {
+                let room = await Rooms.findOne({where: {id: i.roomId}})
+                room = room.toJSON()
+                room.guests = bookings.filter((item) => {
+                    return item.roomId === i.roomId
+                }).map((item) => item.toJSON())
+                data.push(room)
+            }
+            res.json(data)
+        } catch (e) {
+            return next(ApiError.badRequest(e.message))
         }
-        if (last_date) {
-            last_date = BookingController.dateToDBFormat(last_date)
-            if (last_date === 'bad date') {
-                return next(ApiError.badRequest("Incorrect date format"))
-            }
-        }
-        if (first_date && last_date) {
-            obj1 = {
-                [Op.and]:
-                    [{first_date: {[Op.gte]: first_date}}, {first_date: {[Op.lte]: last_date}}]
-            }
-            obj2 = {
-                [Op.and]:
-                    [{last_date: {[Op.gte]: first_date}}, {last_date: {[Op.lte]: last_date}}]
-            }
-            obj_date = {[Op.or]: [obj1, obj2]}
-        } else if (first_date) {
-            obj1 = {
-                first_date: {[Op.gte]: first_date}
-            }
-            obj2 = {
-                last_date: {[Op.gte]: first_date}
-            }
-            obj_date = {[Op.or]: [obj1, obj2]}
-        } else if (last_date) {
-            obj1 = {
-                first_date: {[Op.lte]: last_date}
-            }
-            obj2 = {
-                last_date: {[Op.lte]: last_date}
-            }
-            obj_date = {[Op.or]: [obj1, obj2]}
-        }
-        const bookings = await Booking.findAll({
-            attributes: ['id',
-                'name',
-                'surname',
-                'middlename',
-                'email',
-                'phone',
-                'paid',
-                'roomId',
-                FD,
-                LD],
-            order: [['first_date', 'ASC'], ['last_date', 'ASC']],
-            where: obj_date
-        })
-        let data = []
-        for (let i of rooms) {
-            let room = await Rooms.findOne({where: {id: i.roomId}})
-            room = room.toJSON()
-            room.guests = bookings.filter((item) => {
-                return item.roomId === i.roomId
-            }).map((item) => item.toJSON())
-            data.push(room)
-        }
-        res.json(data)
     }
 
     async getOne(req, res) {
@@ -114,8 +118,9 @@ class BookingController {
             if (first_date === 'bad date' || last_date === 'bad date') {
                 return next(ApiError.badRequest("Incorrect date format"))
             }
-            const amount = req.query.amount
-            const rooms = await Rooms.findAll({where: {[Op.gte]: [{amount}]}})
+            const amount = Number(req.query.amount)
+            console.log(first_date, last_date, amount)
+            const rooms = await Rooms.findAll({where: {amount: {[Op.gte]: amount}}})
             let available_rooms = []
             for (let i of rooms) {
                 let books = await Booking.findAndCountAll({
