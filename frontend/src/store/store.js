@@ -43,6 +43,15 @@ class Store {
 
     setFreeRooms(rooms) {
         this.freeRooms = rooms
+        for (let i = 0; i < rooms.length; i++) {
+            this.freeRooms[i].imgs = []
+            for (let j = 1; j <= this.freeRooms[i].count_photos; j++) {
+                this.freeRooms[i].imgs.push({
+                    id: `${this.freeRooms[i].id}_${j}`,
+                    img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_${this.freeRooms[i].id}_${j}.jpg`
+                })
+            }
+        }
     }
 
 
@@ -69,6 +78,7 @@ class Store {
     setPhone(phone) {
         this.phone = phone
     }
+
     setIsBooked(state) {
         this.isBooked = state
     }

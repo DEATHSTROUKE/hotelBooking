@@ -167,7 +167,7 @@ i.fa {
 .section {
   padding: 25px 0;
 }
-.section:nth-child(2n+3) {
+.section:nth-child(2n+2) {
   background: rgba(0, 0, 0, 0.03);
 }
 .section h2 {
@@ -293,6 +293,7 @@ i.fa {
 }
 
 #gallery .gallery img {
+  width: 80%;
   display: block;
   margin: 0 auto;
   border-radius: 15px;
