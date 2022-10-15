@@ -24,6 +24,7 @@ const Booking = sequelize.define('booking', {
 
 const Admins = sequelize.define('admins', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING},
     tg_id: {type: DataTypes.STRING, allowNull: false, unique: true},
 })
 
