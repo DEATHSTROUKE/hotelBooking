@@ -2,7 +2,6 @@ import React from 'react'
 import {observer} from "mobx-react-lite";
 import FirstScreen from "./sections/FirstScreen";
 import Booking from "./sections/Booking";
-import About from "./sections/About";
 import Room from "./sections/Room";
 import Gallery from "./sections/Gallery";
 import Contacts from "./sections/Contacts";
@@ -44,7 +43,6 @@ const Main = (props) => {
                      onBtnClick={chooseRoom}
                      isCancelBtn={false}
             />
-            <About/>
             <Room title="Одноместные номера"
                   description={<Description items={items}/>}
                   imgs={imgs}
@@ -62,7 +60,7 @@ const Main = (props) => {
             <Gallery imgs={imgs}/>
             <Contacts/>
             <div className="phone-widget">
-                <a href="tel:88005553535"><Phone/></a>
+                <a href="tel:89994422022"><Phone/></a>
             </div>
         </main>
     );

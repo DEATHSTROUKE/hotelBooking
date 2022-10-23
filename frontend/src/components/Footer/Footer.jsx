@@ -14,12 +14,12 @@ const Footer = () => {
                                 <h3>Grand Уют</h3>
                             </div>
                             <div className="item__link">
-                                <a href="tel:88005553535">
+                                <a href="tel:89994422022">
                                     <Phone/>
-                                    88005553535</a>
+                                    89994422022</a>
                             </div>
                             <div className="item__link">
-                                <a href="mailto:support@mail.ru" target="_blank">support@mail.ru</a>
+                                <a href="mailto:Grand.uyt@mail.ru" target="_blank">Grand.uyt@mail.ru</a>
                             </div>
                             <div className="item__link">
                                 Официальный сайт <br/>© 2022

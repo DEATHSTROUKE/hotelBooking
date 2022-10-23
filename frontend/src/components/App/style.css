@@ -356,6 +356,10 @@ i.fa {
   fill: #fff;
 }
 
+.carousel_container {
+  max-height: 90vh;
+}
+
 .footer {
   background: #1A1A1A;
   color: #fff;
@@ -546,6 +550,10 @@ i.fa {
   #guest-data-inp .book__btn {
     width: 100%;
     padding: 15px 20px;
+  }
+
+  .carousel_container {
+    max-height: 40vh;
   }
 
   .footer {

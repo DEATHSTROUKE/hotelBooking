@@ -33,22 +33,22 @@ const Contacts = () => {
                     <div className="contacts__items">
                         <div className="contacts__item">
                             <div className="item__title"><h3>Адрес</h3></div>
-                            <div className="item__info">Первомайская ул., 1, п. г. т. Мотыгино</div>
+                            <div className="item__info">663400, Красноярский край, Мотыгинский район, пгт. Мотыгино, ул. Первомайская, дом 1</div>
                         </div>
                         <div className="contacts__item">
                             <div className="item__title"><h3>Телефон</h3></div>
                             <div className="item__info">
                                 <Phone/>
-                                88005553535
+                                89994422022
                             </div>
                         </div>
                         <div className="contacts__item">
                             <div className="item__title"><h3>Email</h3></div>
-                            <div className="item__info">support@mail.ru</div>
+                            <div className="item__info">Grand.uyt@mail.ru</div>
                         </div>
                         <div className="contacts__item">
                             <div className="item__title"><h3>Часы работы</h3></div>
-                            <div className="item__info">Ежедневно с 10 до 19</div>
+                            <div className="item__info">Круглосуточно</div>
                         </div>
                     </div>
                 </div>
