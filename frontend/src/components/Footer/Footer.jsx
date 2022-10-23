@@ -30,9 +30,6 @@ const Footer = () => {
                                 <h3>Навигация</h3>
                             </div>
                             <div className="item__link">
-                                <a href="#about">Об отеле</a>
-                            </div>
-                            <div className="item__link">
                                 <a href="#booking">Бронирование</a>
                             </div>
                             <div className="item__link">
