@@ -34,7 +34,6 @@ const App = () => {
             <Route path="/" element={
                 <div className="wrapper">
                     <Header page="main" children={[
-                        <a className="nav__item" href="#about" key={1}>Об отеле</a>,
                         <a className="nav__item" href="#booking" key={2}>Бронирование</a>,
                         <a className="nav__item" href="#rooms" key={3}>Номера</a>,
                         <a className="nav__item" href="#gallery" key={4}>Фотогалерея</a>,
