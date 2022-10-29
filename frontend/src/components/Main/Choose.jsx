@@ -44,8 +44,8 @@ const Choose = () => {
                 {!(store.firstDate && store.lastDate && store.guestsCount) ?
                     <EmptyFieldData title="Для выбора комнаты заполните следующие поля"
                                     data={<ul style={{textAlign: 'center'}}>
-                                        {!store.firstDate ? <li>Дату заезда</li> : ''}
-                                        {!store.lastDate ? <li>Дату выезда</li> : ''}
+                                        {!store.firstDate ? <li>Дата заезда</li> : ''}
+                                        {!store.lastDate ? <li>Дата выезда</li> : ''}
                                         {!store.guestsCount ? <li>Количество гостей</li> : ''}
                                     </ul>}/> : ''}
                 {(store.firstDate && store.lastDate && store.guestsCount && store.freeRooms.length === 0 && !store.isLoading) ?

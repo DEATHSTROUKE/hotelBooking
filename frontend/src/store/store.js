@@ -48,7 +48,7 @@ class Store {
             for (let j = 1; j <= this.freeRooms[i].count_photos; j++) {
                 this.freeRooms[i].imgs.push({
                     id: `${this.freeRooms[i].id}_${j}`,
-                    img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_${this.freeRooms[i].id}_${j}.jpg`
+                    img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_${this.freeRooms[i].number}_${j}.jpg`
                 })
             }
         }

@@ -554,6 +554,7 @@ i.fa {
 
   .carousel_container {
     max-height: 40vh;
+    overflow: hidden;
   }
 
   .footer {

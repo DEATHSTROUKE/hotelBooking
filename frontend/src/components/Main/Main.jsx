@@ -7,7 +7,12 @@ import Gallery from "./sections/Gallery";
 import Contacts from "./sections/Contacts";
 import {ReactComponent as Phone} from "../../img/phone.svg";
 import {Description} from "./sections/Description";
-import Photo from "../../img/room1.jpg";
+import Photo1 from "../../img/rooms/room_1_1.jpg";
+import Photo2 from "../../img/rooms/room_1_2.jpg";
+import Photo3 from "../../img/rooms/room_2_1.jpg";
+import Photo4 from "../../img/rooms/room_2_2.jpg";
+import Photo5 from "../../img/rooms/room_3_1.jpg";
+import Photo6 from "../../img/rooms/room_3_2.jpg";
 import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 
@@ -15,14 +20,9 @@ const Main = (props) => {
     React.useEffect(() => {
         store.setIsBooked(false)
     })
-    const items = [{id: 1, text: 'Односпальная кровать'}, {id: 2, text: 'Плазменный телевизор'}, {
-        id: 3,
-        text: 'Wi-fi и кабельное TV'
-    }, {id: 4, text: 'Мини-холодильник'}, {id: 5, text: 'Электрический чайник'}, {
-        id: 6,
-        text: 'Туалетные принадлежности'
-    }]
-    let imgs = [{id: 1, img: Photo}, {id: 2, img: Photo}, {id: 3, img: Photo}, {id: 4, img: Photo}]
+    const items = [{id: 1, text: 'Обогреватель'}, {id: 2, text: 'Туалетные принадлежности'}, {
+        id: 3, text: 'Бесплатный завтрак'}]
+    let imgs = [{id: 1, img: Photo1}, {id: 2, img: Photo2}, {id: 3, img: Photo3}, {id: 4, img: Photo5}]
     const onBookingClick = (amount) => {
         store.setGuestsCount(store.options.find((item) => item.value === amount))
         navigate('/choose')

@@ -18,6 +18,7 @@ const App = () => {
             <Route path="/choose" element={
                 <div className="wrapper">
                     <Header page="choose"
+                            isBurger={false}
                             children={[<a className="nav__item" onClick={onBackClick} key={1}>Назад</a>]}/>
                     <Choose/>
                     <Footer/>
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/booking" element={
                 <div className="wrapper">
                     <Header page="booking"
+                            isBurger={false}
                             children={[<a className="nav__item" onClick={onBackClick} key={1}>Назад</a>]}/>
                     <BookRoom/>
                     <Footer/>
@@ -33,7 +35,7 @@ const App = () => {
             }/>
             <Route path="/" element={
                 <div className="wrapper">
-                    <Header page="main" children={[
+                    <Header page="main" isBurger={true} children={[
                         <a className="nav__item" href="#booking" key={2}>Бронирование</a>,
                         <a className="nav__item" href="#rooms" key={3}>Номера</a>,
                         <a className="nav__item" href="#gallery" key={4}>Фотогалерея</a>,

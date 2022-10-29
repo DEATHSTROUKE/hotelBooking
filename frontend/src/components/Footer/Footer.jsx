@@ -47,13 +47,18 @@ const Footer = () => {
                                 <h3>Навигация</h3>
                             </div>
                             <div className="item__link">
-                                <a href="#">Правила проживания</a>
+                                <a href={process.env.REACT_APP_SERVER_URL + "/documents/Правила%20проживания.docx"}
+                                   download="">Правила проживания</a>
                             </div>
                             <div className="item__link">
-                                <a href="#">Политика конфиденциальности</a>
+                                <a href={process.env.REACT_APP_SERVER_URL + "/documents/Политика%20конфиденциальности.docx"}
+                                   download="">Политика
+                                    конфиденциальности</a>
                             </div>
                             <div className="item__link">
-                                <a href="#">Условия оплаты и бронирования</a>
+                                <a href={process.env.REACT_APP_SERVER_URL + "/documents/Противопожарная%20безопасность.docx"}
+                                   download="">Противопожарная
+                                    безопасность</a>
                             </div>
                         </div>
                     </nav>

@@ -15,8 +15,14 @@ class BookingController {
         }
     }
 
+    static isRoomFree(first_date, last_date) {
+        return [{[Op.and]: [{first_date: {[Op.lte]: first_date}}, {last_date: {[Op.gt]: first_date}}]},
+            {[Op.and]: [{first_date: {[Op.lt]: last_date}}, {last_date: {[Op.gte]: last_date}}]},
+            {[Op.and]: [{first_date: {[Op.gte]: first_date}}, {last_date: {[Op.lte]: last_date}}]}]
+    }
+
     async getAll(req, res, next) {
-        try{
+        try {
             const rooms = await Booking.findAll({attributes: [[Sequelize.literal('DISTINCT "roomId"'), 'roomId']]});
             let first_date = req.query.first_date
             let last_date = req.query.last_date
@@ -118,8 +124,10 @@ class BookingController {
             if (first_date === 'bad date' || last_date === 'bad date') {
                 return next(ApiError.badRequest("Incorrect date format"))
             }
+            if (first_date > last_date) {
+                return next(ApiError.badRequest("First date more them last date"))
+            }
             const amount = Number(req.query.amount)
-            console.log(first_date, last_date, amount)
             const rooms = await Rooms.findAll({where: {amount: {[Op.gte]: amount}}})
             let available_rooms = []
             for (let i of rooms) {
@@ -127,13 +135,14 @@ class BookingController {
                     raw: true,
                     where: {
                         roomId: i.id,
-                        [Op.or]: [{[Op.and]: [{first_date: {[Op.lte]: first_date}}, {last_date: {[Op.gt]: first_date}}]},
-                            {[Op.and]: [{first_date: {[Op.lt]: last_date}}, {last_date: {[Op.gte]: last_date}}]},
-                            {[Op.and]: [{first_date: {[Op.gte]: first_date}}, {last_date: {[Op.lte]: last_date}}]}]
+                        [Op.or]: BookingController.isRoomFree(first_date, last_date)
                     }
                 })
+                console.log(books)
                 if (i.amount - books.count >= amount) {
-                    available_rooms.push(i)
+                    if ((books.count > 0 && books.rows[0].paid < 1500) || books.count === 0) {
+                        available_rooms.push(i)
+                    }
                 }
             }
             res.json(available_rooms)
@@ -150,6 +159,9 @@ class BookingController {
             if (first_date === 'bad date' || last_date === 'bad date') {
                 return next(ApiError.badRequest("Incorrect date format"))
             }
+            if (first_date > last_date) {
+                return next(ApiError.badRequest("First date more them last date"))
+            }
             const room = await Rooms.findOne({where: {id: roomId}})
             if (!room) {
                 return next(ApiError.badRequest("Room is not defined"))
@@ -158,9 +170,7 @@ class BookingController {
                 raw: true,
                 where: {
                     roomId: room.id,
-                    [Op.or]: [{[Op.and]: [{first_date: {[Op.lte]: first_date}}, {last_date: {[Op.gt]: first_date}}]},
-                        {[Op.and]: [{first_date: {[Op.lt]: last_date}}, {last_date: {[Op.gte]: last_date}}]},
-                        {[Op.and]: [{first_date: {[Op.gte]: first_date}}, {last_date: {[Op.lte]: last_date}}]}]
+                    [Op.or]: BookingController.isRoomFree(first_date, last_date)
                 }
             })
             if (room.amount > bookings.count) {
@@ -191,6 +201,9 @@ class BookingController {
             last_date = BookingController.dateToDBFormat(last_date)
             if (first_date === 'bad date' || last_date === 'bad date') {
                 return next(ApiError.badRequest("Incorrect date format"))
+            }
+            if (first_date > last_date) {
+                return next(ApiError.badRequest("First date more them last date"))
             }
             await Booking.update({
                 name,
