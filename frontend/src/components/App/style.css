@@ -294,6 +294,7 @@ i.fa {
 
 #gallery .gallery img {
   width: 80%;
+  max-height: 90vh;
   display: block;
   margin: 0 auto;
   border-radius: 15px;
@@ -504,12 +505,12 @@ i.fa {
   }
 
   .room__wrapper {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-    grid-column-gap: 30px;
+    display: flex;
+    flex-direction: column;
   }
   .room__wrapper .room__gallery img {
     width: 100%;
+    max-height: 40vh;
     border-radius: 15px;
   }
   .room__wrapper .room__info .room__text {
