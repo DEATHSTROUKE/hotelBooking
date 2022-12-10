@@ -1,0 +1,42 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres"
+    environment:
+      - POSTGRES_PASSWORD=post_pwd
+      - POSTGRES_DB=hotel_booking
+    restart: always
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+
+  nginx:
+    depends_on:
+      - server
+    environment:
+      - REACT_APP_API_URL='http://217.18.61.144:5000/api'
+      - REACT_APP_SERVER_URL='http://217.18.61.144:5000'
+    restart: always
+    build: ./frontend
+    ports:
+      - "80:80"
+
+  server:
+    build: ./backend
+    depends_on:
+      - postgres
+    ports:
+      - '5000:5000'
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DB_USER=postgres
+      - DB_HOST=postgres
+      - DB_NAME=hotel_booking
+      - DB_PASSWORD=post_pwd
+      - DB_PORT=5432
+      - FOREST_ENV_SECRET=cc624c7907bc5ecf9f5b5fddb81eaedbfaa98997b0892f20fb23f7c4ae3d3016
+      - FOREST_AUTH_SECRET=35030efcf8cbd06ccc8ba0c4eab7186edd4df761cbc12672
+    restart: always
+
+volumes:
+  postgres_db:
