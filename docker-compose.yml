@@ -9,16 +9,16 @@ services:
     volumes:
       - postgres_db:/var/lib/postgresql/data
 
-  nginx:
-    depends_on:
-      - server
-    environment:
-      - REACT_APP_API_URL='http://217.18.61.144:5000/api'
-      - REACT_APP_SERVER_URL='http://217.18.61.144:5000'
-    restart: always
-    build: ./frontend
-    ports:
-      - "80:80"
+#  nginx:
+#    depends_on:
+#      - server
+#    environment:
+#      - REACT_APP_API_URL='http://217.18.61.144:5000/api'
+#      - REACT_APP_SERVER_URL='http://217.18.61.144:5000'
+#    restart: always
+#    build: ./frontend
+#    ports:
+#      - "80:80"
 
   server:
     build: ./backend
