@@ -604,5 +604,10 @@ i.fa {
     text-align: center;
   }
 }
+.fake-map {
+  background: url("../../img/mapsProload.png") center center;
+  background-size: cover;
+  min-height: 550px;
+}
 
 /*# sourceMappingURL=style.css.map */

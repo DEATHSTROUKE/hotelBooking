@@ -7,22 +7,37 @@ import Gallery from "./sections/Gallery";
 import Contacts from "./sections/Contacts";
 import {ReactComponent as Phone} from "../../img/phone.svg";
 import {Description} from "./sections/Description";
-import Photo1 from "../../img/rooms/room_1_1.jpg";
-import Photo2 from "../../img/rooms/room_1_2.jpg";
-import Photo3 from "../../img/rooms/room_2_1.jpg";
-import Photo4 from "../../img/rooms/room_2_2.jpg";
-import Photo5 from "../../img/rooms/room_3_1.jpg";
-import Photo6 from "../../img/rooms/room_3_2.jpg";
 import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 
+let options_map = {
+    once: true,
+    passive: true,
+    capture: true
+};
+
 const Main = (props) => {
+    const ref = React.useRef(null)
     React.useEffect(() => {
         store.setIsBooked(false)
-    })
+        try {
+            ref.current.addEventListener('click', () => store.setIsShowMaps(true), options_map);
+            ref.current.addEventListener('mouseover', () => store.setIsShowMaps(true), options_map);
+            ref.current.addEventListener('touchstart', () => store.setIsShowMaps(true), options_map);
+            ref.current.addEventListener('touchmove', () => store.setIsShowMaps(true), options_map);
+        } catch (e) {
+        }
+    }, [])
+
     const items = [{id: 1, text: 'Обогреватель'}, {id: 2, text: 'Туалетные принадлежности'}, {
-        id: 3, text: 'Бесплатный завтрак'}]
-    let imgs = [{id: 1, img: Photo1}, {id: 2, img: Photo2}, {id: 3, img: Photo3}, {id: 4, img: Photo5}]
+        id: 3, text: 'Бесплатный завтрак'
+    }]
+    let imgs = [
+        {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_1_1.jpg`},
+        {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_3_2.jpg`},
+        {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_5_2.jpg`},
+        {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_8_1.jpg`}
+    ]
     const onBookingClick = (amount) => {
         store.setGuestsCount(store.options.find((item) => item.value === amount))
         navigate('/choose')
@@ -58,7 +73,7 @@ const Main = (props) => {
                   onBtnClick={() => onBookingClick(2)}
             />
             <Gallery imgs={imgs}/>
-            <Contacts/>
+            {store.isShowMaps ? <Contacts/> : <div className='fake-map' ref={ref}/>}
             <div className="phone-widget">
                 <a href="tel:89994422022"><Phone/></a>
             </div>

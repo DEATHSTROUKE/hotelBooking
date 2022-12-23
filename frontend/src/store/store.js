@@ -16,6 +16,7 @@ class Store {
     phone = ''
     isBooked = false
     isLoading = false
+    isShowMaps = false
 
     constructor() {
         makeAutoObservable(this)
@@ -85,6 +86,10 @@ class Store {
 
     setIsLoading(state) {
         this.isLoading = state
+    }
+
+    setIsShowMaps(value) {
+        this.isShowMaps = value
     }
 }
 

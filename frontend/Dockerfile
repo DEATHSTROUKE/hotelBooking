@@ -3,8 +3,8 @@ WORKDIR /app
 COPY ./package.json ./
 RUN npm i
 COPY . .
-ENV REACT_APP_API_URL='http://217.18.61.144:5000/api'
-ENV REACT_APP_SERVER_URL='http://217.18.61.144:5000'
+ENV REACT_APP_API_URL='https://xn--c1adkkfibdd6ae2ij.xn--p1ai/api'
+ENV REACT_APP_SERVER_URL='https://xn--c1adkkfibdd6ae2ij.xn--p1ai'
 RUN npm run build
 
 FROM nginx

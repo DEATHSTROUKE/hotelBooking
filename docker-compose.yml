@@ -34,9 +34,12 @@ services:
       - DB_NAME=hotel_booking
       - DB_PASSWORD=post_pwd
       - DB_PORT=5432
-      - FOREST_ENV_SECRET=cc624c7907bc5ecf9f5b5fddb81eaedbfaa98997b0892f20fb23f7c4ae3d3016
-      - FOREST_AUTH_SECRET=35030efcf8cbd06ccc8ba0c4eab7186edd4df761cbc12672
+      - FOREST_ENV_SECRET=3710dc39e19842d0791329bf94cf673525d42060e1d3d167cedf9ca3720ca68c
+      - FOREST_AUTH_SECRET=8cf42f2d3f58d054761495627a0cc1867376ae753bf483e5
+      - FOREST_AGENT_URL=https://xn--c1adkkfibdd6ae2ij.xn--p1ai
     restart: always
+
+
 
 volumes:
   postgres_db:
