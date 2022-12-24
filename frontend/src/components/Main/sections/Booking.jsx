@@ -51,17 +51,12 @@ const Booking = ({title, onBtnClick, btnText, isCancelBtn}) => {
                                 onChange={(val) => store.setGuestsCount(val)}
                                 options={store.options}
                                 styles={customStyles}
+                                placeholder="Гости"
                             />
                         </div>
                         <button className="booking__btn btn_center" onClick={onBtnClick}>
                             {btnText}
                         </button>
-                        {/*<button className="booking__btn">*/}
-                        {/*    <div className="btn__left">Гостей: 2</div>*/}
-                        {/*    <div className="btn__right">*/}
-                        {/*        <Down/>*/}
-                        {/*    </div>*/}
-                        {/*</button>*/}
                     </div>
                     {isCancelBtn ? <div className="booking__cancel">
                         <a>Отменить бронирование</a>

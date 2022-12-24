@@ -453,6 +453,11 @@ i.fa {
     max-width: 33%;
   }
 }
+@media screen and (max-width: 900px) {
+  .menu__nav .nav__item {
+    font-size: 14px;
+  }
+}
 @media screen and (max-width: 635px) {
   .container {
     padding: 0 20px;

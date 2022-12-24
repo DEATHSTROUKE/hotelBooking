@@ -5,8 +5,8 @@ const cors = require('cors')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
-const { createAgent } = require('@forestadmin/agent');
-const { createSequelizeDataSource } = require('@forestadmin/datasource-sequelize');
+const {createAgent} = require('@forestadmin/agent');
+const {createSequelizeDataSource} = require('@forestadmin/datasource-sequelize');
 
 const PORT = process.env.PORT || 5000
 app = express()
@@ -25,7 +25,7 @@ app.use(errorHandler)
 const start = async () => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync()
+        await sequelize.sync({alter: {drop: false}})
         app.listen(PORT, () => console.log(`Server start on port ${PORT}`))
     } catch (e) {
         console.log(e)

@@ -9,6 +9,7 @@ import {ReactComponent as Phone} from "../../img/phone.svg";
 import {Description} from "./sections/Description";
 import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
+import About from "./sections/About";
 
 let options_map = {
     once: true,
@@ -58,6 +59,7 @@ const Main = (props) => {
                      onBtnClick={chooseRoom}
                      isCancelBtn={false}
             />
+            <About />
             <Room title="Одноместные номера"
                   description={<Description items={items}/>}
                   imgs={imgs}
@@ -65,10 +67,17 @@ const Main = (props) => {
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(1)}
             />
+            <Room title="Семейный номер"
+                  description={<Description items={items}/>}
+                  imgs={imgs}
+                  roomCost={3000}
+                  btnText="Выбрать"
+                  onBtnClick={() => onBookingClick(2)}
+            />
             <Room title="Двухместные номера"
                   description={<Description items={items.slice(1, 4)}/>}
                   imgs={imgs}
-                  roomCost={2000}
+                  roomCost={3000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(2)}
             />

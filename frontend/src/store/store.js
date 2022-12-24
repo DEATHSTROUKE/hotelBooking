@@ -7,8 +7,9 @@ class Store {
     guestsCount = 0
     guests = []
     options = [
-        {value: 1, label: 'Гостей: 1'},
-        {value: 2, label: 'Гостей: 2'}
+        {value: 1, is_family: false, label: 'Гостей: 1'},
+        {value: 2, is_family: false, label: 'Гостей: 2'},
+        {value: 2, is_family: true, label: 'Семейная пара'}
     ];
     freeRooms = []
     chosenRoomId = null

@@ -6,19 +6,25 @@ const About = () => {
             <div className="container">
                 <div className="section__wrapper">
                     <div className="section__title"><h2>Об отеле</h2></div>
-                    <div className="about__text">Loremm ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                        commodo
-                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                        montes,
-                        nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                        Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate
-                        eget,
-                        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-                        pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                        vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                        enim.
-                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a
-                    </div>
+                    <ul className="about__text">
+                        <li>Бесплатный WiFi</li>
+                        <li>Бар/лаунж</li>
+                        <li>Трансфер из/до аэропорта</li>
+                        <li>Помещения для проведения конференций</li>
+                        <li>Банкетный зал</li>
+                        <li>Ресторан</li>
+                        <li>Услуги такси</li>
+                        <li>Отель для некурящих</li>
+                        <li>Заезд круглосуточно</li>
+                        <li>Услуги прачечной (глажка, прачка)</li>
+                        <li>Парковка</li>
+                        <li>Бесплатный завтрак</li>
+                        <li>Для гостей отеля скидка на линию раздачи в кафе 10%</li>
+                        <li>Тренажёрный зал (за дополнительную плату)</li>
+                        <li>Фитнес зал (за дополнительную плату)</li>
+                        <li>Сауна (за дополнительную плату)</li>
+                        <li>Бассейн (за дополнительную плату)</li>
+                    </ul>
                 </div>
             </div>
         </section>

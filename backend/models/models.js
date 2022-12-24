@@ -7,6 +7,7 @@ const Rooms = sequelize.define('rooms', {
     amount: {type: DataTypes.INTEGER, allowNull: false},
     cost: {type: DataTypes.INTEGER, allowNull: false},
     girl_only: {type: DataTypes.BOOLEAN, defaultValue: false},
+    is_family: {type: DataTypes.BOOLEAN, defaultValue: false},
     count_photos: {type: DataTypes.INTEGER},
 })
 

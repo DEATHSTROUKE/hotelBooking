@@ -15,8 +15,8 @@ class RoomsController {
 
     async create(req, res, next) {
         try {
-            const {number, amount, cost, girl_only, count_photos} = req.body
-            const room = await Rooms.create({number, amount, cost, girl_only, count_photos})
+            const {number, amount, cost, girl_only, count_photos, is_family} = req.body
+            const room = await Rooms.create({number, amount, cost, girl_only, count_photos, is_family})
             res.json(room)
         } catch (e) {
             return next(ApiError.badRequest(e.message))
@@ -25,8 +25,8 @@ class RoomsController {
 
     async updateObj(req, res, next) {
         try {
-            const {id, number, amount, cost, girl_only, count_photos} = req.body
-            await Rooms.update({number, amount, cost, girl_only, count_photos}, {where: {id}})
+            const {id, number, amount, cost, girl_only, count_photos, is_family} = req.body
+            await Rooms.update({number, amount, cost, girl_only, count_photos, is_family}, {where: {id}})
             res.json({success: "ok"})
         } catch (e) {
             return next(ApiError.badRequest(e.message))
@@ -36,7 +36,6 @@ class RoomsController {
     async deleteObj(req, res, next) {
         try{
             const {id} = req.params
-            //TODO delete room without bookings
             const book = await Booking.findOne({where: {roomId: id}})
             if (book) {
                 return next(ApiError.badRequest('This rooms has bookings'))
