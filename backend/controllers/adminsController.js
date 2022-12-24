@@ -39,7 +39,7 @@ class AdminsController {
     async updateObj(req, res, next) {
         try {
             const data = req.body
-            await Admins.update({tg_id: data.tg_id, name: data.name}, {where: {id: data.id}})
+            await Admins.update({tg_id: data.tg_id, name: data.name, role: data.role}, {where: {id: data.id}})
             res.json({success: "ok"})
         } catch (e) {
             return next(ApiError.badRequest(e.message))
