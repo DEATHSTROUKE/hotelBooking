@@ -3,7 +3,13 @@ const {Admins} = require('../models/models')
 
 class AdminsController {
     async getAll(req, res) {
-        const data = await Admins.findAll()
+        const {tg_id} = req.query
+        let data
+        if (tg_id) {
+            data = await Admins.findOne({where: {tg_id}})
+        } else {
+            data = await Admins.findAll()
+        }
         res.json(data)
     }
 
@@ -47,7 +53,7 @@ class AdminsController {
     }
 
     async deleteObj(req, res, next) {
-        try{
+        try {
             const {id} = req.params
             await Admins.destroy({where: {id}})
             res.json({success: "ok"})
