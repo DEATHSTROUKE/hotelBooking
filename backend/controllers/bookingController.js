@@ -16,6 +16,16 @@ class BookingController {
         }
     }
 
+    static DateToCorrectFormat(date) {
+        try {
+            let parts = date.split('-');
+            return parts[2] + '.' + parts[1] + '.' + parts[0];
+        } catch (e) {
+            return 'bad date'
+        }
+    }
+
+
     static isRoomFree(first_date, last_date) {
         return [{[Op.and]: [{first_date: {[Op.lte]: first_date}}, {last_date: {[Op.gt]: first_date}}]},
             {[Op.and]: [{first_date: {[Op.lt]: last_date}}, {last_date: {[Op.gte]: last_date}}]},
@@ -186,13 +196,15 @@ class BookingController {
                     paid
                 })
                 //TODO send email to user mail
+                console.log(data)
                 const mailOptions = {
                     from: process.env.EMAIL_LOGIN,
                     to: data.email,
                     subject: "Бронирование гостиницы Grand Уют",
-                    text: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${first_date} по ${last_date}`,
-                    html: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${first_date} по ${last_date} 
-                            <br> <a href="https://xn--c1adkkfibdd6ae2ij.xn--p1ai/delete_booking/${data.id}">Отменить бронирование</a>`
+                    text: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${data.first_date} по ${data.last_date}`,
+                    html: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${BookingController.DateToCorrectFormat(data.first_date)} 
+                    по ${BookingController.DateToCorrectFormat(data.last_date)} 
+                            <br> Отменить бронирование можно по телефону, указанному на сайте гостиницы`
                 };
                 await transporter.sendMail(mailOptions, function (e, info) {
                     if (e) {
@@ -259,15 +271,13 @@ class BookingController {
     }
 
     async deleteObj(req, res, next) {
-        const auth = req.headers.authorization
+        const email = req.headers.authorization
         const {id} = req.params
-        const {email} = req.query
-        const book = await Booking.findOne({where: {id, email}})
-        console.log(id, email)
+        const book = await Booking.findOne({where: {[Op.and]: [{id, email}]}})
         let admin
         try {
-            admin = await Admins.findOne({where: {tg_id: auth}})
-        } catch (e) {
+            admin = await Admins.findOne({where: {tg_id: email}})
+        } catch {
         }
         if (book || admin) {
             try {

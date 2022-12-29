@@ -6,7 +6,7 @@ const isAdminMiddleware = require("../middleware/isAdminMiddleware");
 router.get('/', bookingController.getAll)
 router.get('/get_free_rooms', bookingController.getFreeRooms)
 router.get('/test_email', bookingController.testEmail)
-router.get('/delete_booking/:id', bookingController.deleteObj)
+// router.get('/delete_booking', bookingController.deleteObj)
 router.get('/:id', bookingController.getOne)
 router.post('/', bookingController.create)
 router.put('/', isAdminMiddleware, bookingController.updateObj)
