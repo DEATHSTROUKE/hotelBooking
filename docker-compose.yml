@@ -37,6 +37,8 @@ services:
       - FOREST_ENV_SECRET=3710dc39e19842d0791329bf94cf673525d42060e1d3d167cedf9ca3720ca68c
       - FOREST_AUTH_SECRET=8cf42f2d3f58d054761495627a0cc1867376ae753bf483e5
       - FOREST_AGENT_URL=https://xn--c1adkkfibdd6ae2ij.xn--p1ai
+      - EMAIL_LOGIN=andjeybur@gmail.com
+      - EMAIL_PASSWORD=pjhorfvfqojglrxh
     restart: always
 
 
