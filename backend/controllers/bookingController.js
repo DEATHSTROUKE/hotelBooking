@@ -128,7 +128,8 @@ class BookingController {
                 return next(ApiError.badRequest("First date more them last date"))
             }
             const amount = Number(req.query.amount)
-            const rooms = await Rooms.findAll({where: {amount: {[Op.gte]: amount}}})
+            const is_family = req.query.is_family || false
+            const rooms = await Rooms.findAll({where: {amount, is_family}})
             let available_rooms = []
             for (let i of rooms) {
                 let books = await Booking.findAndCountAll({
@@ -138,11 +139,9 @@ class BookingController {
                         [Op.or]: BookingController.isRoomFree(first_date, last_date)
                     }
                 })
-                console.log(books)
-                if (i.amount - books.count >= amount) {
-                    if ((books.count > 0 && books.rows[0].paid < 1500) || books.count === 0) {
-                        available_rooms.push(i)
-                    }
+                console.log(books.count)
+                if (books.count === 0) {
+                    available_rooms.push(i)
                 }
             }
             res.json(available_rooms)

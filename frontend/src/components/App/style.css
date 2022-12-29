@@ -52,6 +52,11 @@ i.fa {
   margin: 0 auto;
 }
 
+ul {
+  list-style: circle;
+  margin-left: 20px;
+}
+
 .header {
   position: fixed;
   background: rgba(0, 0, 0, 0.6);
@@ -206,6 +211,21 @@ i.fa {
   font-size: 80px;
 }
 
+.about__text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-text__center {
+  text-align: center;
+}
+
+.error {
+  font-weight: bold;
+  color: #b91010;
+  padding: 10px 0;
+}
+
 #booking {
   background: #333333;
   color: #fff;
@@ -290,6 +310,9 @@ i.fa {
 }
 .room__wrapper .room__info .room__cost .cost__btn:hover {
   background: #EAA649;
+}
+.room__wrapper .text__description ul li {
+  margin-bottom: 3px;
 }
 
 #gallery .gallery img {

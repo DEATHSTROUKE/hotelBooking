@@ -10,6 +10,8 @@ import {Description} from "./sections/Description";
 import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 import About from "./sections/About";
+import {imgs} from "../../functions/staticRoomsData";
+import {items} from "../../functions/staticRoomsData";
 
 let options_map = {
     once: true,
@@ -30,15 +32,6 @@ const Main = (props) => {
         }
     }, [])
 
-    const items = [{id: 1, text: 'Обогреватель'}, {id: 2, text: 'Туалетные принадлежности'}, {
-        id: 3, text: 'Бесплатный завтрак'
-    }]
-    let imgs = [
-        {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_1_1.jpg`},
-        {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_3_2.jpg`},
-        {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_5_2.jpg`},
-        {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_8_1.jpg`}
-    ]
     const onBookingClick = (amount) => {
         store.setGuestsCount(store.options.find((item) => item.value === amount))
         navigate('/choose')
@@ -59,7 +52,7 @@ const Main = (props) => {
                      onBtnClick={chooseRoom}
                      isCancelBtn={false}
             />
-            <About />
+            <About/>
             <Room title="Одноместные номера"
                   description={<Description items={items}/>}
                   imgs={imgs}
@@ -82,7 +75,7 @@ const Main = (props) => {
                   onBtnClick={() => onBookingClick(2)}
             />
             <Gallery imgs={imgs}/>
-            {store.isShowMaps ? <Contacts/> : <div className='fake-map' ref={ref}/>}
+            {store.isShowMaps ? <Contacts/> : <div className="fake-map" id="contacts" ref={ref}/>}
             <div className="phone-widget">
                 <a href="tel:89994422022"><Phone/></a>
             </div>

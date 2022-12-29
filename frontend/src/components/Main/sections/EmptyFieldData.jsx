@@ -9,7 +9,9 @@ const EmptyFieldData = ({title, data}) => {
                         <h2>{title}</h2>
                     </div>
                     <div className="section__main">
-                        {data}
+                        <div className="main-text__center">
+                            {data}
+                        </div>
                     </div>
                 </div>
             </div>

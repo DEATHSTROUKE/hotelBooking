@@ -7,9 +7,9 @@ class Store {
     guestsCount = 0
     guests = []
     options = [
-        {value: 1, is_family: false, label: 'Гостей: 1'},
-        {value: 2, is_family: false, label: 'Гостей: 2'},
-        {value: 2, is_family: true, label: 'Семейная пара'}
+        {id: 1, value: {count: 1, is_family: false}, label: 'Гостей: 1'},
+        {id: 2, value: {count: 2, is_family: false}, label: 'Гостей: 2'},
+        {id: 3, value: {count: 2, is_family: true}, label: 'Семейная пара'}
     ];
     freeRooms = []
     chosenRoomId = null
@@ -37,8 +37,9 @@ class Store {
 
     setGuestsCount(count) {
         this.guestsCount = count
+        console.log(count)
         this.guests = []
-        for (let i = 0; i < count.value; i++) {
+        for (let i = 0; i < count.value.count; i++) {
             this.guests.push({id: i, name: '', surname: '', middlename: ''})
         }
     }

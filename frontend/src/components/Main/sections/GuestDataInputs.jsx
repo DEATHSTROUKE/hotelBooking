@@ -2,7 +2,10 @@ import React from 'react';
 import store from "../../../store/store";
 import GuestPersonalData from "./GuestPersonalData";
 import {observer} from "mobx-react-lite";
+import {IMaskInput} from "react-imask";
 import {fetchPostBooking} from "../../../functions/fetchRequests";
+
+const PhoneMask = '+{7} (000) 000-00-00';
 
 const GuestDataInputs = () => {
     const onClickBooking = () => {
@@ -48,8 +51,13 @@ const GuestDataInputs = () => {
                     <div className="section__main">
                         <div className="input">
                             <label>Введите телефон</label>
-                            <input type="text" value={store.phone}
-                                   onChange={(e) => store.setPhone(e.target.value)}/>
+                            <IMaskInput
+                                mask={PhoneMask}
+                                value={store.phone}
+                                onAccept={(value) => {
+                                    store.setPhone(value)
+                                }}
+                            />
                         </div>
                         <div className="input">
                             <label>Введите email</label>

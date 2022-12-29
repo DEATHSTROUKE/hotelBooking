@@ -34,6 +34,7 @@ const Choose = () => {
                                                      title={`Комната №${item.number}`}
                                                      description={<ChooseRoomDescription
                                                          amount={item.amount}
+                                                         is_family={item.is_family}
                                                          girl_only={item.girl_only}
                                                      />}
                                                      imgs={item.imgs}
@@ -44,12 +45,12 @@ const Choose = () => {
                 {!(store.firstDate && store.lastDate && store.guestsCount) ?
                     <EmptyFieldData title="Для выбора комнаты заполните следующие поля"
                                     data={<ul style={{textAlign: 'center'}}>
-                                        {!store.firstDate ? <li>Дата заезда</li> : ''}
-                                        {!store.lastDate ? <li>Дата выезда</li> : ''}
-                                        {!store.guestsCount ? <li>Количество гостей</li> : ''}
+                                        {!store.firstDate ? <div>Дата заезда</div> : ''}
+                                        {!store.lastDate ? <div>Дата выезда</div> : ''}
+                                        {!store.guestsCount ? <div>Количество гостей</div> : ''}
                                     </ul>}/> : ''}
                 {(store.firstDate && store.lastDate && store.guestsCount && store.freeRooms.length === 0 && !store.isLoading) ?
-                    <EmptyFieldData title="Подходящей комнаты не найдено"/> : ''}
+                    <EmptyFieldData title="Подходящей комнаты не найдено" data="Для размещения в номере другого типа, а также уточнения информации вы можете позвонить по номеру 89994422022"/> : ''}
                 {store.isLoading ? <EmptyFieldData title="Загрузка доступных комнат..."/> : ''}
             </div>
         </main>

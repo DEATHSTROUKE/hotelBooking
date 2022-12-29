@@ -63,6 +63,11 @@ i.fa {
   margin: 0 auto;
 }
 
+ul {
+  list-style: circle;
+  margin-left: 20px;
+}
+
 //HEADER
 
 .header {
@@ -246,6 +251,22 @@ i.fa {
   }
 }
 
+//ABOUT
+.about__text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-text__center {
+  text-align: center;
+}
+
+.error {
+  font-weight: bold;
+  color: #b91010;
+  padding: 10px 0;
+}
+
 //BOOKING
 
 #booking {
@@ -359,6 +380,13 @@ i.fa {
         &:hover {
           background: $main;
         }
+      }
+    }
+  }
+  .text__description {
+    ul {
+      li {
+        margin-bottom: 3px;
       }
     }
   }

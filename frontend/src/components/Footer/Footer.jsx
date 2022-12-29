@@ -33,7 +33,7 @@ const Footer = () => {
                                 <a href="#booking">Бронирование</a>
                             </div>
                             <div className="item__link">
-                                <a href="#booking">Об отеле</a>
+                                <a href="#about">Об отеле</a>
                             </div>
                             <div className="item__link">
                                 <a href="#rooms">Номера</a>
