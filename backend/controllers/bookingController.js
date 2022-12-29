@@ -2,6 +2,7 @@ const ApiError = require("../error/ApiError");
 const {Booking, Rooms, Admins} = require('../models/models')
 const {Sequelize, Op} = require("sequelize");
 const sequelize = require("sequelize");
+const {transporter} = require("../mailConfig");
 const FD = [sequelize.fn('to_char', sequelize.col('first_date'), 'dd.mm.YYYY'), 'first_date']
 const LD = [sequelize.fn('to_char', sequelize.col('last_date'), 'dd.mm.YYYY'), 'last_date']
 
@@ -184,6 +185,23 @@ class BookingController {
                     last_date,
                     paid
                 })
+                //TODO send email to user mail
+                const mailOptions = {
+                    from: process.env.EMAIL_LOGIN,
+                    to: data.email,
+                    subject: "Бронирование гостиницы Grand Уют",
+                    text: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${first_date} по ${last_date}`,
+                    html: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${first_date} по ${last_date} 
+                            <br> <a href="https://xn--c1adkkfibdd6ae2ij.xn--p1ai/delete_booking/${data.id}">Отменить бронирование</a>`
+                };
+                await transporter.sendMail(mailOptions, function (e, info) {
+                    if (e) {
+                        return console.log(e);
+                    }
+                    console.log('Message sent: ' + info.response);
+                    res.json(info.response)
+                });
+
                 res.json(data)
             } else {
                 return next(ApiError.badRequest("The room is full"))
@@ -191,6 +209,25 @@ class BookingController {
         } catch (e) {
             return next(ApiError.badRequest(e.message))
         }
+    }
+
+    async testEmail(req, res) {
+        let email = 'andrey.burakov.03@mail.ru'
+        let data = '123123'
+        const mailOptions = {
+            from: process.env.EMAIL_LOGIN,
+            to: email,
+            subject: "Бронирование гостиницы Grand Уют",
+            text: "Привет",
+            html: `${data} <a>Здравствуй</a>`
+        };
+        await transporter.sendMail(mailOptions, function (e, info) {
+            if (e) {
+                return console.log(e);
+            }
+            console.log('Message sent: ' + info.response);
+            res.json(info.response)
+        });
     }
 
     async updateObj(req, res, next) {
@@ -222,13 +259,15 @@ class BookingController {
     }
 
     async deleteObj(req, res, next) {
-        const email = req.headers.authorization
+        const auth = req.headers.authorization
         const {id} = req.params
-        const book = await Booking.findOne({where: {[Op.and]: [{id, email}]}})
+        const {email} = req.query
+        const book = await Booking.findOne({where: {id, email}})
+        console.log(id, email)
         let admin
         try {
-            admin = await Admins.findOne({where: {tg_id: email}})
-        } catch {
+            admin = await Admins.findOne({where: {tg_id: auth}})
+        } catch (e) {
         }
         if (book || admin) {
             try {
