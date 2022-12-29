@@ -11,7 +11,11 @@ import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 import About from "./sections/About";
 import {imgs} from "../../functions/staticRoomsData";
-import {items} from "../../functions/staticRoomsData";
+import {
+    descriptionArrayForOne,
+    descriptionArrayForTwo,
+    descriptionArrayForFamily
+} from "../../functions/staticRoomsData";
 
 let options_map = {
     once: true,
@@ -19,7 +23,7 @@ let options_map = {
     capture: true
 };
 
-const Main = (props) => {
+const Main = () => {
     const ref = React.useRef(null)
     React.useEffect(() => {
         store.setIsBooked(false)
@@ -32,8 +36,8 @@ const Main = (props) => {
         }
     }, [])
 
-    const onBookingClick = (amount) => {
-        store.setGuestsCount(store.options.find((item) => item.value === amount))
+    const onBookingClick = (num) => {
+        store.setGuestsCount(store.options.find((item) => item.id === num))
         navigate('/choose')
     }
 
@@ -54,21 +58,21 @@ const Main = (props) => {
             />
             <About/>
             <Room title="Одноместные номера"
-                  description={<Description items={items}/>}
+                  description={<Description items={descriptionArrayForOne}/>}
                   imgs={imgs}
                   roomCost={2500}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(1)}
             />
             <Room title="Семейный номер"
-                  description={<Description items={items}/>}
+                  description={<Description items={descriptionArrayForFamily}/>}
                   imgs={imgs}
                   roomCost={3000}
                   btnText="Выбрать"
-                  onBtnClick={() => onBookingClick(2)}
+                  onBtnClick={() => onBookingClick(3)}
             />
             <Room title="Двухместные номера"
-                  description={<Description items={items.slice(1, 4)}/>}
+                  description={<Description items={descriptionArrayForTwo}/>}
                   imgs={imgs}
                   roomCost={3000}
                   btnText="Выбрать"

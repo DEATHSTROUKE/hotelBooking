@@ -4,7 +4,7 @@ class Store {
     isMenuOpen = false
     firstDate = null
     lastDate = null
-    guestsCount = 0
+    guestsCount = null
     guests = []
     options = [
         {id: 1, value: {count: 1, is_family: false}, label: 'Гостей: 1'},
@@ -18,6 +18,7 @@ class Store {
     isBooked = false
     isLoading = false
     isShowMaps = false
+    bookError = ''
 
     constructor() {
         makeAutoObservable(this)
@@ -37,7 +38,6 @@ class Store {
 
     setGuestsCount(count) {
         this.guestsCount = count
-        console.log(count)
         this.guests = []
         for (let i = 0; i < count.value.count; i++) {
             this.guests.push({id: i, name: '', surname: '', middlename: ''})
@@ -92,6 +92,10 @@ class Store {
 
     setIsShowMaps(value) {
         this.isShowMaps = value
+    }
+
+    setBookError(message) {
+        this.bookError = message
     }
 }
 

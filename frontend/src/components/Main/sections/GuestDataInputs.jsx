@@ -10,20 +10,21 @@ const PhoneMask = '+{7} (000) 000-00-00';
 const GuestDataInputs = () => {
     const onClickBooking = () => {
         if (store.email === '') {
-            alert('Введите email')
+            store.setBookError('Введите email')
         } else if (store.phone === '') {
-            alert('Введите номер телефона')
+            store.setBookError('Введите номер телефона')
         } else {
             let fl = true
             for (let i of store.guests) {
-                if (i.name === '' || i.surname === '' || i.middlename === '') {
+                if (i.name.trim() === '' || i.surname.trim() === '' || i.middlename.trim() === '') {
                     fl = false
                     break
                 }
             }
             if (!fl) {
-                alert('Заполните данные о гостях')
+                store.setBookError('Заполните пожалуйста все поля')
             } else {
+                store.setBookError('')
                 fetchPostBooking()
             }
         }
@@ -71,6 +72,9 @@ const GuestDataInputs = () => {
                                                                        middlename={item.middlename}
                                                                        onChangeItem={onChangeItem}
                         />)}
+                        {store.bookError && <div className="error">
+                            {store.bookError}
+                        </div>}
                         <button className="book__btn btn_center" onClick={onClickBooking}>
                             Забронировать номер
                         </button>

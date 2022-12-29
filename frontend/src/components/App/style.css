@@ -214,6 +214,7 @@ ul {
 .about__text {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
 }
 
 .main-text__center {
@@ -484,6 +485,11 @@ ul {
 @media screen and (max-width: 635px) {
   .container {
     padding: 0 20px;
+  }
+
+  .about__text {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .header.menu-open {

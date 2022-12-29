@@ -9,6 +9,7 @@ import EmptyFieldData from "./sections/EmptyFieldData";
 const BookRoom = () => {
     const navigate = useNavigate()
     useEffect(() => {
+        store.setBookError('')
         if (!(store.firstDate && store.lastDate && store.guestsCount && store.chosenRoomId)) {
             navigate(-1)
         }

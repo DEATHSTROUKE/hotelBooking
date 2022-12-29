@@ -8,7 +8,7 @@ import {
 export const Description = ({items}) => {
     return (
         <ul>
-            {items.map((item) => <li key={item.id}>{item.text}</li>)}
+            {items.map((item, ind) => <li key={ind}>{item}</li>)}
         </ul>
     );
 };

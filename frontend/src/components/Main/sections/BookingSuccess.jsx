@@ -14,8 +14,10 @@ const BookingSuccess = () => {
                     <div className="section__main">
                         <div style={{textAlign: "center"}}>
                             <div>
-                                Бронирование номера с {DateToCorrectFormat(store.firstDate)} по {DateToCorrectFormat(store.lastDate)} на {store.guestsCount.value} {store.guestsCount.value === 1 ? 'гостя' : 'гостей'}. Вся
-                                информация направлена на почту {store.email}.
+                                Бронирование номера с {DateToCorrectFormat(store.firstDate)} по
+                                {DateToCorrectFormat(store.lastDate)} на {store.guestsCount.value.count}
+                                {store.guestsCount.value.count === 1 ? 'гостя' : 'гостей'}.
+                                Вся информация направлена на почту {store.email}.
                                 <br/>Отменить бронирование можно по ссылке из
                                 почты.
                             </div>
