@@ -64,19 +64,19 @@ const Main = () => {
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(1)}
             />
-            <Room title="Семейный номер"
-                  description={<Description items={descriptionArrayForFamily}/>}
-                  imgs={imgs}
-                  roomCost={3000}
-                  btnText="Выбрать"
-                  onBtnClick={() => onBookingClick(3)}
-            />
             <Room title="Двухместные номера"
                   description={<Description items={descriptionArrayForTwo}/>}
                   imgs={imgs}
                   roomCost={3000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(2)}
+            />
+            <Room title="Семейный номер"
+                  description={<Description items={descriptionArrayForFamily}/>}
+                  imgs={imgs}
+                  roomCost={3000}
+                  btnText="Выбрать"
+                  onBtnClick={() => onBookingClick(3)}
             />
             <Gallery imgs={imgs}/>
             {store.isShowMaps ? <Contacts/> : <div className="fake-map" id="contacts" ref={ref}/>}

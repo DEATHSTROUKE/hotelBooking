@@ -216,6 +216,9 @@ ul {
   grid-template-columns: 1fr 1fr;
   gap: 0 20px;
 }
+.about__text li {
+  list-style: url("../../img/check.svg");
+}
 
 .main-text__center {
   text-align: center;

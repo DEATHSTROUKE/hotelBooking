@@ -47,7 +47,7 @@ const Footer = () => {
                         </div>
                         <div className="footer-nav__item">
                             <div className="item__title">
-                                <h3>Навигация</h3>
+                                <h3>Информация</h3>
                             </div>
                             <div className="item__link">
                                 <a href={process.env.REACT_APP_SERVER_URL + "/documents/Правила%20проживания.docx"}

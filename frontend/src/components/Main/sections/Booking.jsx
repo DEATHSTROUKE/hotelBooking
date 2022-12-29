@@ -51,6 +51,7 @@ const Booking = ({title, onBtnClick, btnText, isCancelBtn}) => {
                                 onChange={(val) => store.setGuestsCount(val)}
                                 options={store.options}
                                 styles={customStyles}
+                                isSearchable={false}
                                 placeholder="Гости"
                             />
                         </div>
