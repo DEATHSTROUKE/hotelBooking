@@ -39,7 +39,7 @@ const Choose = () => {
                                                      />}
                                                      imgs={item.imgs}
                                                      btnText="Выбрать"
-                                                     roomCost={item.cost}
+                                                     roomCost={store.guestsCount.value.cost}
                                                      onBtnClick={() => onNextClick(item.id)}/>
                 )}
                 {!(store.firstDate && store.lastDate && store.guestsCount) ?
