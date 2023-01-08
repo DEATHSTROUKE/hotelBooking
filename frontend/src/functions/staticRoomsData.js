@@ -15,10 +15,21 @@ export let imgsTwo = [
     {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_5_2.jpg`}
 ]
 
-export let imgsGallery = [
+export let imgsFamily = [
     {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_10_1.jpg`},
     {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_10_2.jpg`},
     {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_11_1.jpg`},
+    {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_11_2.jpg`}
+]
+
+export let imgsGallery = [
+    {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_10_1.jpg`},
+    {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_2_1.jpg`},
+    {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_5_2.jpg`},
+    {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_10_2.jpg`},
+    {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_2_2.jpg`},
+    {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_11_1.jpg`},
+    {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_5_1.jpg`},
     {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_11_2.jpg`}
 ]
 

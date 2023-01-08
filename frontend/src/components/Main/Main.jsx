@@ -10,7 +10,7 @@ import {Description} from "./sections/Description";
 import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 import About from "./sections/About";
-import {imgsOne, imgsTwo, imgsGallery} from "../../functions/staticRoomsData";
+import {imgsOne, imgsTwo, imgsGallery, imgsFamily} from "../../functions/staticRoomsData";
 import {
     descriptionArrayForOne,
     descriptionArrayForTwo,
@@ -73,7 +73,7 @@ const Main = () => {
             />
             <Room title="Семейный номер"
                   description={<Description items={descriptionArrayForFamily}/>}
-                  imgs={imgsOne}
+                  imgs={imgsFamily}
                   roomCost={3000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(3)}
