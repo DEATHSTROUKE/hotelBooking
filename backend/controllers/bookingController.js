@@ -195,7 +195,6 @@ class BookingController {
                     last_date,
                     paid
                 })
-                //TODO send email to user mail
                 console.log(data)
                 const mailOptions = {
                     from: process.env.EMAIL_LOGIN,

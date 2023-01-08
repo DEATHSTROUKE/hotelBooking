@@ -10,7 +10,7 @@ import {Description} from "./sections/Description";
 import store from "../../store/store";
 import {useNavigate} from "react-router-dom";
 import About from "./sections/About";
-import {imgs} from "../../functions/staticRoomsData";
+import {imgsOne, imgsTwo, imgsGallery} from "../../functions/staticRoomsData";
 import {
     descriptionArrayForOne,
     descriptionArrayForTwo,
@@ -59,26 +59,26 @@ const Main = () => {
             <About/>
             <Room title="Одноместные номера"
                   description={<Description items={descriptionArrayForOne}/>}
-                  imgs={imgs}
+                  imgs={imgsOne}
                   roomCost={2500}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(1)}
             />
             <Room title="Двухместные номера"
                   description={<Description items={descriptionArrayForTwo}/>}
-                  imgs={imgs}
+                  imgs={imgsTwo}
                   roomCost={3000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(2)}
             />
             <Room title="Семейный номер"
                   description={<Description items={descriptionArrayForFamily}/>}
-                  imgs={imgs}
+                  imgs={imgsOne}
                   roomCost={3000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(3)}
             />
-            <Gallery imgs={imgs}/>
+            <Gallery imgs={imgsGallery}/>
             {store.isShowMaps ? <Contacts/> : <div className="fake-map" id="contacts" ref={ref}/>}
             <div className="phone-widget">
                 <a href="tel:89994422022"><Phone/></a>
