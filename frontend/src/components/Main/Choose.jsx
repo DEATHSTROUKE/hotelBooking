@@ -33,7 +33,7 @@ const Choose = () => {
                 {store.freeRooms.map((item) => <Room key={item.id}
                                                      title={`Комната №${item.number}`}
                                                      description={<ChooseRoomDescription
-                                                         amount={item.amount}
+                                                         amount={store.guestsCount.value.people_count}
                                                          is_family={item.is_family}
                                                          girl_only={item.girl_only}
                                                      />}
