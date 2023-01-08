@@ -4,7 +4,7 @@ export const items = [{id: 1, text: 'Обогреватель'}, {id: 2, text: '
 export let imgsOne = [
     {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_1_2.jpg`},
     {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_3_1.jpg`},
-    {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_7_1.jpg`},
+    {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_9_1.jpg`},
     {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_8_2.jpg`}
 ]
 
@@ -25,6 +25,7 @@ export let imgsFamily = [
 export let imgsGallery = [
     {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_10_1.jpg`},
     {id: 1, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_2_1.jpg`},
+    {id: 3, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_9_2.jpg`},
     {id: 4, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_5_2.jpg`},
     {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_10_2.jpg`},
     {id: 2, img: `${process.env.REACT_APP_SERVER_URL}/img_rooms/room_2_2.jpg`},
