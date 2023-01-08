@@ -71,7 +71,7 @@ const Main = () => {
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(2)}
             />
-            <Room title="Семейный номер"
+            <Room title="Семейные номера"
                   description={<Description items={descriptionArrayForFamily}/>}
                   imgs={imgsFamily}
                   roomCost={3000}
