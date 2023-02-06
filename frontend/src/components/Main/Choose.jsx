@@ -16,8 +16,8 @@ const Choose = () => {
         fetchRoomsData()
     }, [store.firstDate, store.lastDate, store.guestsCount]);
 
-    const onNextClick = (id) => {
-        store.setChosenRoomId(id)
+    const onNextClick = (id, num) => {
+        store.setChosenRoomId(id, num)
         store.setGuestsCount(store.guestsCount)
         navigate('/booking')
     }
@@ -30,17 +30,18 @@ const Choose = () => {
         <main className="main">
             <Booking title="Выберите комнату" btnText="Найти" onBtnClick={roomsRefresh} isCancelBtn={false}/>
             <div className="rooms-container">
-                {store.freeRooms.map((item) => <Room key={item.id}
-                                                     title={`Комната №${item.number}`}
-                                                     description={<ChooseRoomDescription
-                                                         amount={store.guestsCount.value.people_count}
-                                                         is_family={item.is_family}
-                                                         girl_only={item.girl_only}
-                                                     />}
-                                                     imgs={item.imgs}
-                                                     btnText="Выбрать"
-                                                     roomCost={store.guestsCount.value.cost}
-                                                     onBtnClick={() => onNextClick(item.id)}/>
+                {store.freeRooms.map((item) =>
+                    <Room key={item.id}
+                          title={`Комната №${item.number}`}
+                          description={<ChooseRoomDescription
+                              amount={store.guestsCount.value.people_count}
+                              is_family={item.is_family}
+                              girl_only={item.girl_only}
+                          />}
+                          imgs={item.imgs}
+                          btnText="Выбрать"
+                          roomCost={store.guestsCount.value.cost}
+                          onBtnClick={() => onNextClick(item.id, item.number)}/>
                 )}
                 {!(store.firstDate && store.lastDate && store.guestsCount) ?
                     <EmptyFieldData title="Для выбора комнаты заполните следующие поля"

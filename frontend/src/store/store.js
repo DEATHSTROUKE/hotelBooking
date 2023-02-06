@@ -13,6 +13,7 @@ class Store {
     ];
     freeRooms = []
     chosenRoomId = null
+    chosenRoomNumber = null
     email = ''
     phone = ''
     isBooked = false
@@ -58,8 +59,9 @@ class Store {
     }
 
 
-    setChosenRoomId(id) {
+    setChosenRoomId(id, num) {
         this.chosenRoomId = id
+        this.chosenRoomNumber = num
     }
 
     setName(ind, name) {

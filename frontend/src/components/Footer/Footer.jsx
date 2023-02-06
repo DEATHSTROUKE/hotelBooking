@@ -22,7 +22,7 @@ const Footer = () => {
                                 <a href="mailto:Grand.uyt@mail.ru" target="_blank">Grand.uyt@mail.ru</a>
                             </div>
                             <div className="item__link">
-                                Официальный сайт <br/>© 2022
+                                Официальный сайт <br/>© 2023
                             </div>
                         </div>
                         <div className="footer-nav__item">
