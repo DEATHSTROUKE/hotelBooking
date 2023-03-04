@@ -200,7 +200,7 @@ class BookingController {
                     from: process.env.EMAIL_LOGIN,
                     to: data.email,
                     subject: "Бронирование гостиницы Grand Уют",
-                    text: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${data.first_date} по ${data.last_date}`,
+                    text: `Комната №${room.number} забронирована на имя ${surname} ${name} ${middlename} с ${data.first_date} по ${data.last_date}`,
                     html: `Комната №${roomId} забронирована на имя ${surname} ${name} ${middlename} с ${BookingController.DateToCorrectFormat(data.first_date)} 
                     по ${BookingController.DateToCorrectFormat(data.last_date)} 
                             <br> Отменить бронирование можно по телефону, указанному на сайте гостиницы`
