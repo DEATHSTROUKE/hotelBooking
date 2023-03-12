@@ -140,7 +140,12 @@ class BookingController {
             }
             const amount = Number(req.query.amount)
             const is_family = req.query.is_family || false
-            const rooms = await Rooms.findAll({where: {amount, is_family}})
+            let rooms
+            if (is_family) {
+                rooms = await Rooms.findAll({where: {amount, is_family}})
+            } else {
+                rooms = await Rooms.findAll({where: {amount}})
+            }
             let available_rooms = []
             for (let i of rooms) {
                 let books = await Booking.findAndCountAll({
