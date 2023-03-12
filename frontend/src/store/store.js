@@ -7,7 +7,7 @@ class Store {
     guestsCount = null
     guests = []
     options = [
-        {id: 1, value: {count: 1, is_family: true, people_count: 1, cost: 2500}, label: 'Гостей: 1'},
+        {id: 1, value: {count: 1, is_family: false, people_count: 1, cost: 2500}, label: 'Гостей: 1'},
         {id: 2, value: {count: 2, is_family: false, people_count: 2, cost: 3000}, label: 'Гостей: 2'},
         {id: 3, value: {count: 1, is_family: true, people_count: 2, cost: 3000}, label: 'Семейная пара'}
     ];
