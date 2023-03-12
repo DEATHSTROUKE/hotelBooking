@@ -5,16 +5,16 @@ const cors = require('cors')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
-const {createAgent} = require('@forestadmin/agent');
-const {createSequelizeDataSource} = require('@forestadmin/datasource-sequelize');
+//const {createAgent} = require('@forestadmin/agent');
+//const {createSequelizeDataSource} = require('@forestadmin/datasource-sequelize');
 
 const PORT = process.env.PORT || 5000
-app = express()
-createAgent({
-    authSecret: process.env.FOREST_AUTH_SECRET,
-    envSecret: process.env.FOREST_ENV_SECRET,
-    isProduction: process.env.NODE_ENV === 'production',
-}).addDataSource(createSequelizeDataSource(sequelize)).mountOnExpress(app).start();
+const app = express()
+//createAgent({
+//    authSecret: process.env.FOREST_AUTH_SECRET,
+//    envSecret: process.env.FOREST_ENV_SECRET,
+//    isProduction: process.env.NODE_ENV === 'production',
+//}).addDataSource(createSequelizeDataSource(sequelize)).mountOnExpress(app).start();
 
 app.use(cors())
 app.use(express.json())
