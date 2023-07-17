@@ -60,21 +60,21 @@ const Main = () => {
             <Room title="Одноместные номера"
                   description={<Description items={descriptionArrayForOne}/>}
                   imgs={imgsOne}
-                  roomCost={2500}
+                  roomCost={3000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(1)}
             />
             <Room title="Двухместные номера"
                   description={<Description items={descriptionArrayForTwo}/>}
                   imgs={imgsTwo}
-                  roomCost={3000}
+                  roomCost={4000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(2)}
             />
             <Room title="Семейные номера"
                   description={<Description items={descriptionArrayForFamily}/>}
                   imgs={imgsFamily}
-                  roomCost={3000}
+                  roomCost={4000}
                   btnText="Выбрать"
                   onBtnClick={() => onBookingClick(3)}
             />
