@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -6,7 +7,9 @@ body {
   font-weight: 300;
 }
 
-*, :after, :before {
+*,
+:after,
+:before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
@@ -22,7 +25,7 @@ a {
   cursor: pointer;
 }
 a:hover {
-  color: #EAA649;
+  color: #eaa649;
 }
 
 button {
@@ -67,7 +70,8 @@ ul {
 
 .header-relative {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("../../img/first.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+    url("../../img/first.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -147,7 +151,17 @@ ul {
 .menu__logo .logo__text {
   font-weight: bold;
   font-size: 1.2rem;
-  background-image: linear-gradient(180deg, #F2CA7A 0%, #E5BB6D 18.75%, #DAAD61 34.9%, #CC9D53 49.48%, #C7964D 63.02%, #BE8C44 75.52%, #B5823C 88.02%, #AD7833 100%);
+  background-image: linear-gradient(
+    180deg,
+    #f2ca7a 0%,
+    #e5bb6d 18.75%,
+    #daad61 34.9%,
+    #cc9d53 49.48%,
+    #c7964d 63.02%,
+    #be8c44 75.52%,
+    #b5823c 88.02%,
+    #ad7833 100%
+  );
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -157,7 +171,7 @@ ul {
 .menu__logo img {
   display: block;
   width: 50px;
-  background: #1A1A1A;
+  background: #1a1a1a;
   border-radius: 50%;
 }
 
@@ -172,7 +186,7 @@ ul {
 .section {
   padding: 25px 0;
 }
-.section:nth-child(2n+2) {
+.section:nth-child(2n + 2) {
   background: rgba(0, 0, 0, 0.03);
 }
 .section h2 {
@@ -255,7 +269,17 @@ ul {
   align-items: center;
   justify-content: space-between;
   color: #fff;
-  background: linear-gradient(180deg, #F2CA7A 0%, #E5BB6D 18.75%, #DAAD61 34.9%, #CC9D53 49.48%, #C7964D 63.02%, #BE8C44 75.52%, #B5823C 88.02%, #AD7833 100%);
+  background: linear-gradient(
+    180deg,
+    #f2ca7a 0%,
+    #e5bb6d 18.75%,
+    #daad61 34.9%,
+    #cc9d53 49.48%,
+    #c7964d 63.02%,
+    #be8c44 75.52%,
+    #b5823c 88.02%,
+    #ad7833 100%
+  );
   padding: 10px 20px;
   border-radius: 15px;
   width: 100%;
@@ -269,7 +293,17 @@ ul {
   fill: #fff;
 }
 #booking .booking__btn:hover {
-  background: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #AE8646 49.48%, #A47B3E 63.02%, #976F35 75.52%, #8C642C 88.02%, #845B26 100%);
+  background: linear-gradient(
+    180deg,
+    #cfae6b 0%,
+    #c29f5d 18.75%,
+    #b89250 34.9%,
+    #ae8646 49.48%,
+    #a47b3e 63.02%,
+    #976f35 75.52%,
+    #8c642c 88.02%,
+    #845b26 100%
+  );
 }
 #booking .booking__btn.btn_center {
   justify-content: center;
@@ -307,13 +341,13 @@ ul {
 }
 .room__wrapper .room__info .room__cost .cost__btn {
   display: block;
-  border: 2px solid #EAA649;
+  border: 2px solid #eaa649;
   border-radius: 15px;
   padding: 10px 15px;
   width: 100%;
 }
 .room__wrapper .room__info .room__cost .cost__btn:hover {
-  background: #EAA649;
+  background: #eaa649;
 }
 .room__wrapper .text__description ul li {
   margin-bottom: 3px;
@@ -366,14 +400,34 @@ ul {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  background: linear-gradient(180deg, #F2CA7A 0%, #E5BB6D 18.75%, #DAAD61 34.9%, #CC9D53 49.48%, #C7964D 63.02%, #BE8C44 75.52%, #B5823C 88.02%, #AD7833 100%);
+  background: linear-gradient(
+    180deg,
+    #f2ca7a 0%,
+    #e5bb6d 18.75%,
+    #daad61 34.9%,
+    #cc9d53 49.48%,
+    #c7964d 63.02%,
+    #be8c44 75.52%,
+    #b5823c 88.02%,
+    #ad7833 100%
+  );
   border-radius: 50%;
   padding: 15px;
   cursor: pointer;
   z-index: 3;
 }
 .phone-widget:hover {
-  background: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #AE8646 49.48%, #A47B3E 63.02%, #976F35 75.52%, #8C642C 88.02%, #845B26 100%);
+  background: linear-gradient(
+    180deg,
+    #cfae6b 0%,
+    #c29f5d 18.75%,
+    #b89250 34.9%,
+    #ae8646 49.48%,
+    #a47b3e 63.02%,
+    #976f35 75.52%,
+    #8c642c 88.02%,
+    #845b26 100%
+  );
 }
 .phone-widget svg {
   width: 25px;
@@ -389,7 +443,7 @@ ul {
 }
 
 .footer {
-  background: #1A1A1A;
+  background: #1a1a1a;
   color: #fff;
   position: relative;
   z-index: 4;
@@ -451,17 +505,37 @@ ul {
   display: flex;
   align-items: center;
   color: #fff;
-  background: linear-gradient(180deg, #F2CA7A 0%, #E5BB6D 18.75%, #DAAD61 34.9%, #CC9D53 49.48%, #C7964D 63.02%, #BE8C44 75.52%, #B5823C 88.02%, #AD7833 100%);
+  background: linear-gradient(
+    180deg,
+    #f2ca7a 0%,
+    #e5bb6d 18.75%,
+    #daad61 34.9%,
+    #cc9d53 49.48%,
+    #c7964d 63.02%,
+    #be8c44 75.52%,
+    #b5823c 88.02%,
+    #ad7833 100%
+  );
   padding: 10px 45px;
   border-radius: 15px;
   justify-content: center;
 }
 #guest-data-inp .book__btn:hover {
-  background: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #AE8646 49.48%, #A47B3E 63.02%, #976F35 75.52%, #8C642C 88.02%, #845B26 100%);
+  background: linear-gradient(
+    180deg,
+    #cfae6b 0%,
+    #c29f5d 18.75%,
+    #b89250 34.9%,
+    #ae8646 49.48%,
+    #a47b3e 63.02%,
+    #976f35 75.52%,
+    #8c642c 88.02%,
+    #845b26 100%
+  );
 }
 
 #booking-success a {
-  color: #EAA649;
+  color: #eaa649;
 }
 #booking-success a:hover {
   filter: brightness(0.7);

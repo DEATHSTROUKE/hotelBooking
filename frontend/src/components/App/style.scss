@@ -1,14 +1,34 @@
 //VARS
 $white: #fff;
-$black80: rgba(0, 0, 0, .8);
-$black90: #1A1A1A;
+$black80: rgba(0, 0, 0, 0.8);
+$black90: #1a1a1a;
 $black801: #333333;
-$main: #EAA649;
-$gradient: linear-gradient(180deg, #F2CA7A 0%, #E5BB6D 18.75%, #DAAD61 34.9%, #CC9D53 49.48%, #C7964D 63.02%, #BE8C44 75.52%, #B5823C 88.02%, #AD7833 100%);
-$gradient2: linear-gradient(180deg, #CFAE6B 0%, #C29F5D 18.75%, #B89250 34.9%, #AE8646 49.48%, #A47B3E 63.02%, #976F35 75.52%, #8C642C 88.02%, #845B26 100%);
+$main: #eaa649;
+$gradient: linear-gradient(
+  180deg,
+  #f2ca7a 0%,
+  #e5bb6d 18.75%,
+  #daad61 34.9%,
+  #cc9d53 49.48%,
+  #c7964d 63.02%,
+  #be8c44 75.52%,
+  #b5823c 88.02%,
+  #ad7833 100%
+);
+$gradient2: linear-gradient(
+  180deg,
+  #cfae6b 0%,
+  #c29f5d 18.75%,
+  #b89250 34.9%,
+  #ae8646 49.48%,
+  #a47b3e 63.02%,
+  #976f35 75.52%,
+  #8c642c 88.02%,
+  #845b26 100%
+);
 
-
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -16,7 +36,9 @@ body {
   font-weight: 300;
 }
 
-*, :after, :before {
+*,
+:after,
+:before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
@@ -72,7 +94,7 @@ ul {
 
 .header {
   position: fixed;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
   width: 100%;
   padding: 10px 0;
   z-index: 2;
@@ -80,7 +102,8 @@ ul {
 
 .header-relative {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("../../img/first.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+    url("../../img/first.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -94,14 +117,14 @@ ul {
   position: relative;
   padding: 15px;
   border-radius: 5px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 20px;
     height: 1.5px;
@@ -110,12 +133,12 @@ ul {
     left: 50%;
     transform: translateX(-52%);
     z-index: 2;
-    transition: all .3s ease-out;
+    transition: all 0.3s ease-out;
   }
 
   &::before {
     position: absolute;
-    content: '';
+    content: "";
     width: 20px;
     height: 1.5px;
     background: $white;
@@ -123,8 +146,7 @@ ul {
     left: 50%;
     transform: translateX(-52%);
     z-index: 2;
-    transition: all .3s ease-out;
-
+    transition: all 0.3s ease-out;
   }
 
   span {
@@ -136,7 +158,7 @@ ul {
     left: 50%;
     transform: translateX(-52%);
     z-index: 2;
-    transition: opacity .3s ease-out;
+    transition: opacity 0.3s ease-out;
   }
 
   &.menu-open {
@@ -155,7 +177,6 @@ ul {
     }
   }
 }
-
 
 .menu__wrapper {
   display: flex;
@@ -201,7 +222,7 @@ ul {
 
 .section {
   &:nth-child(2n + 2) {
-    background: rgba(0, 0, 0, .03);
+    background: rgba(0, 0, 0, 0.03);
   }
 
   padding: 25px 0;
@@ -319,7 +340,6 @@ ul {
       }
     }
 
-
     &:hover {
       background: $gradient2;
     }
@@ -328,8 +348,6 @@ ul {
       justify-content: center;
       text-align: center;
     }
-
-
   }
 
   .booking__select {
@@ -340,7 +358,6 @@ ul {
     text-align: center;
     margin-top: 10px;
   }
-
 }
 
 //ROOMS
@@ -348,7 +365,6 @@ ul {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-column-gap: 30px;
-
 
   .room__gallery {
     img {
@@ -453,7 +469,6 @@ ul {
   }
 }
 
-
 //PHONE WIDGET
 
 .phone-widget {
@@ -484,7 +499,6 @@ ul {
 .carousel_container {
   max-height: 90vh;
 }
-
 
 //FOOTER
 
@@ -535,7 +549,6 @@ ul {
     }
   }
 }
-
 
 //BOOKING PAGE
 #guest-data-inp {
@@ -644,7 +657,7 @@ ul {
     left: 0;
     background: $black80;
     transform: translateX(100vw);
-    transition: transform ease .3s;
+    transition: transform ease 0.3s;
 
     .nav__item {
       font-size: 1.4rem;
@@ -676,7 +689,6 @@ ul {
       grid-row-gap: 20px;
     }
   }
-
 
   .room__wrapper {
     //grid-template-columns: 1fr;
@@ -711,7 +723,6 @@ ul {
       }
     }
   }
-
 
   #contacts {
     .contacts {
@@ -753,12 +764,11 @@ ul {
     overflow: hidden;
   }
 
-
   .footer {
     padding: 20px 0;
 
     .footer__wrapper {
-      grid-template-areas: 'img img' 'text text';
+      grid-template-areas: "img img" "text text";
       grid-template-columns: 1fr 1fr;
       justify-items: center;
 
@@ -770,7 +780,7 @@ ul {
 
     .footer-nav {
       grid-area: text;
-      grid-template-areas: 'text1 text2' 'text3 text3';
+      grid-template-areas: "text1 text2" "text3 text3";
       grid-template-columns: 1fr 1fr;
       margin-top: 10px;
       justify-items: center;
@@ -807,11 +817,9 @@ ul {
           grid-area: text3;
           text-align: center;
         }
-
       }
     }
   }
-
 }
 
 .fake-map {
