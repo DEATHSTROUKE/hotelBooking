@@ -20,7 +20,7 @@ services:
       - postgres
     ports:
       - 5000:5000
-    env_file: .env
+    env_file: ./backend/.env
     restart: always
 
 volumes:
