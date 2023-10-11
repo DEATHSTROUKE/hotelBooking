@@ -3,25 +3,11 @@ version: "3"
 services:
   postgres:
     container_name: postgres
-    image: "postgres"
+    image: postgres
     env_file: .env-postgres
     restart: always
     volumes:
       - postgres_db:/var/lib/postgresql/data
-
-  nginx:
-    container_name: frontend
-    build:
-      context: ./frontend
-      dockerfile: ./deployment/Dockerfil.nginx
-
-    depends_on:
-      - server
-    env_file: ./deployment/.env-nginx
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
 
   server:
     container_name: backend
@@ -31,7 +17,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "5000:5000"
+      - 5000:5000
     env_file: ./deployment/.env
     restart: always
 
