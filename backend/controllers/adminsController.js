@@ -25,6 +25,9 @@ class AdminsController {
   async create(req, res, next) {
     try {
       const data = req.body;
+      if (!data.role) {
+        data.role = "admin";
+      }
       const admin = await Admins.create(data);
       res.json(admin);
     } catch (e) {

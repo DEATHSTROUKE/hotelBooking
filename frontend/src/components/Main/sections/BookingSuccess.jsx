@@ -12,7 +12,7 @@ const BookingSuccess = () => {
             <h2>Номер успешно забронирован</h2>
           </div>
           <div className="section__main">
-            <div style={{ textAlign: "center" }}>
+            <div style={{ textAlign: "center", lineHeight: 1.4 }}>
               <div>
                 {`Комната №${
                   store.chosenRoomNumber

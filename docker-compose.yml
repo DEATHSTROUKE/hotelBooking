@@ -1,47 +1,39 @@
 version: "3"
+
 services:
   postgres:
+    container_name: postgres
     image: "postgres"
-    environment:
-      - POSTGRES_PASSWORD=post_pwd
-      - POSTGRES_DB=hotel_booking
+    env_file: .env-postgres
     restart: always
     volumes:
       - postgres_db:/var/lib/postgresql/data
 
-#  nginx:
-#    depends_on:
-#      - server
-#    environment:
-#      - REACT_APP_API_URL='http://217.18.61.144:5000/api'
-#      - REACT_APP_SERVER_URL='http://217.18.61.144:5000'
-#    restart: always
-#    build: ./frontend
-#    ports:
-#      - "80:80"
+  nginx:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: ./deployment/Dockerfil.nginx
+
+    depends_on:
+      - server
+    env_file: ./deployment/.env-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
 
   server:
-    build: ./backend
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: ./deployment/Dockerfile
     depends_on:
       - postgres
     ports:
-      - '5000:5000'
-    environment:
-      - NODE_ENV=production
-      - PORT=5000
-      - DB_USER=postgres
-      - DB_HOST=postgres
-      - DB_NAME=hotel_booking
-      - DB_PASSWORD=post_pwd
-      - DB_PORT=5432
-      - FOREST_ENV_SECRET=3710dc39e19842d0791329bf94cf673525d42060e1d3d167cedf9ca3720ca68c
-      - FOREST_AUTH_SECRET=8cf42f2d3f58d054761495627a0cc1867376ae753bf483e5
-      - FOREST_AGENT_URL=https://xn--c1adkkfibdd6ae2ij.xn--p1ai
-      - EMAIL_LOGIN=andjeybur@gmail.com
-      - EMAIL_PASSWORD=pjhorfvfqojglrxh
+      - "5000:5000"
+    env_file: ./deployment/.env
     restart: always
-
-
 
 volumes:
   postgres_db:

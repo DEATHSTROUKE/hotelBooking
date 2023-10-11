@@ -15,8 +15,13 @@ class RoomsController {
 
   async create(req, res, next) {
     try {
-      const { number, amount, cost, girl_only, count_photos, is_family } =
+      let { number, amount, cost, girl_only, count_photos, is_family } =
         req.body;
+      console.log(is_family);
+      if (is_family === null || is_family === undefined) {
+        is_family = amount === 1 ? true : false;
+      }
+
       const room = await Rooms.create({
         number,
         amount,
