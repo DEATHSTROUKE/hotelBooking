@@ -274,7 +274,7 @@ class BookingController {
 
         console.log("booking data", data);
 
-        let info = await this.sendBookingEmail({
+        await this.sendBookingEmail({
           room,
           name,
           surname,
@@ -283,6 +283,15 @@ class BookingController {
         });
         await this.sendBookingEmail({
           email: process.env.EMAIL_HOTEL,
+          room,
+          name,
+          surname,
+          middlename,
+          data,
+        });
+
+        await this.sendBookingEmail({
+          email: process.env.EMAIL_HOTEL2,
           room,
           name,
           surname,
@@ -300,22 +309,23 @@ class BookingController {
     }
   };
 
-  async sendBookingEmail({ email, room, name, surname, middlename, data }) {
-    console.log({ email, room, name, surname, middlename, data });
-    const mailOptions = {
-      from: process.env.EMAIL_LOGIN,
-      to: email || data.email,
-      subject: "Бронирование гостиницы Grand Уют",
-      text: `Комната №${room.number} забронирована на имя ${surname} ${name} ${middlename} с ${data.first_date} по ${data.last_date}`,
-      html: `Комната №${
-        room.number
-      } забронирована на имя ${surname} ${name} ${middlename} с ${BookingController.DateToCorrectFormat(
-        data.first_date
-      )} 
-                по ${BookingController.DateToCorrectFormat(data.last_date)} 
-                        <br> Отменить бронирование можно по телефону, указанному на сайте гостиницы`,
-    };
-
+  sendBookingEmail = async ({
+    email,
+    room,
+    name,
+    surname,
+    middlename,
+    data,
+  }) => {
+    let mailOptions = this.makeMailOptions({
+      email: email || data.email,
+      room,
+      name,
+      surname,
+      middlename,
+      data,
+      toHotel: email !== undefined,
+    });
     let infoObj;
     await transporter.sendMail(mailOptions, function (e, info) {
       if (e) {
@@ -324,8 +334,25 @@ class BookingController {
       console.log("Message sent: " + info.response);
       infoObj = info;
     });
-    console.log(infoObj);
     return infoObj?.response;
+  };
+
+  makeMailOptions({ email, room, name, surname, middlename, data, toHotel }) {
+    return {
+      from: process.env.EMAIL_LOGIN,
+      to: email,
+      subject: "Бронирование гостиницы Grand Уют",
+      html: `Комната №${
+        room.number
+      } забронирована на имя ${surname} ${name} ${middlename} с ${BookingController.DateToCorrectFormat(
+        data.first_date
+      )} по ${BookingController.DateToCorrectFormat(data.last_date)} ${
+        !toHotel
+          ? "<br> Отменить бронирование можно по телефону, указанному на сайте гостиницы"
+          : `<br> Номер телефона клиента: ${data.phone} <br> Почта клиента: ${data.email}`
+      }
+      `,
+    };
   }
 
   async testEmail(req, res) {
