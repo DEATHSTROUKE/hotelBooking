@@ -259,7 +259,10 @@ class BookingController {
         },
       });
 
-      if (room.amount > bookings.count) {
+      if (
+        room.amount > bookings.count ||
+        (room.amount === bookings.count && room.is_family)
+      ) {
         const data = await Booking.create({
           name,
           surname,
@@ -317,6 +320,7 @@ class BookingController {
     middlename,
     data,
   }) => {
+    if (process.env.NO_SEND_EMAIL) return;
     let mailOptions = this.makeMailOptions({
       email: email || data.email,
       room,

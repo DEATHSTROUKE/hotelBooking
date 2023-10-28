@@ -19,9 +19,11 @@ const BookingSuccess = () => {
                 } забронирована с ${DateToCorrectFormat(
                   store.firstDate
                 )} по ${DateToCorrectFormat(store.lastDate)} на ${
-                  store.guestsCount.value.count
+                  store.guestsCount.value.people_count
                 } ${
-                  store.guestsCount.value.count === 1 ? " гостя" : " гостей"
+                  store.guestsCount.value.people_count === 1
+                    ? " гостя"
+                    : " гостей"
                 }. Вся информация направлена на почту ${store.email}.`}
                 <br />
                 {`Отменить бронирование можно по телефону на сайте отеля.`}
