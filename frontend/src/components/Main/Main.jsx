@@ -86,7 +86,7 @@ const Main = () => {
         title="Одноместные номера"
         description={<Description items={descriptionArrayForOne} />}
         imgs={imgsOne}
-        roomCost={3000}
+        roomCost={4000}
         btnText="Выбрать"
         onBtnClick={() => onBookingClick(1)}
       />
@@ -94,7 +94,7 @@ const Main = () => {
         title="Двухместные номера"
         description={<Description items={descriptionArrayForTwo} />}
         imgs={imgsTwo}
-        roomCost={4000}
+        roomCost={5000}
         btnText="Выбрать"
         onBtnClick={() => onBookingClick(2)}
       />
@@ -102,7 +102,7 @@ const Main = () => {
         title="Семейные номера"
         description={<Description items={descriptionArrayForFamily} />}
         imgs={imgsFamily}
-        roomCost={4000}
+        roomCost={5000}
         btnText="Выбрать"
         onBtnClick={() => onBookingClick(3)}
       />

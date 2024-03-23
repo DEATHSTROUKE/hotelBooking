@@ -9,17 +9,17 @@ class Store {
   options = [
     {
       id: 1,
-      value: { count: 1, is_family: false, people_count: 1, cost: 3000 },
+      value: { count: 1, is_family: false, people_count: 1, cost: 4000 },
       label: "Гостей: 1",
     },
     {
       id: 2,
-      value: { count: 2, is_family: false, people_count: 2, cost: 4000 },
+      value: { count: 2, is_family: false, people_count: 2, cost: 5000 },
       label: "Гостей: 2",
     },
     {
       id: 3,
-      value: { count: 1, is_family: true, people_count: 2, cost: 4000 },
+      value: { count: 1, is_family: true, people_count: 2, cost: 5000 },
       label: "Семейная пара",
     },
   ];
